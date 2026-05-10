@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Étudiant Informatique de Gestion</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #2d3748;
+        }
+
+        .cv-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: white;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+
+        .photo-placeholder {
+            width: 120px;
+            height: 120px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            border: 4px solid rgba(255,255,255,0.3);
+        }
+
+        .name {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .title {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3b82f6;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            width: 30px;
+            height: 30px;
+            background: #3b82f6;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 10px;
+            transition: transform 0.2s;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+            background: #eff6ff;
+        }
+
+        .contact-icon {
+            width: 35px;
+            height: 35px;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        .education-item, .experience-item {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3b82f6;
+            transition: transform 0.2s;
+        }
+
+        .education-item:hover, .experience-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .item-title {
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 1.1em;
+        }
+
+        .item-date {
+            background: #3b82f6;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .item-subtitle {
+            color: #64748b;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .skill-category h4 {
+            color: #1e3a8a;
+            margin-bottom: 12px;
+            font-size: 1em;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .skill-tag.beginner {
+            background: linear-gradient(135deg, #94a3b8, #64748b);
+        }
+
+        .languages-list {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .language-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f8fafc;
+            padding: 12px 20px;
+            border-radius: 10px;
+        }
+
+        .language-name {
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        .language-level {
+            color: #64748b;
+            font-size: 0.9em;
+        }
+
+        .interests-list {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .interest-item {
+            background: #eff6ff;
+            color: #1e3a8a;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            border: 2px solid #3b82f6;
+        }
+
+        .profile-text {
+            line-height: 1.8;
+            color: #4a5568;
+            font-size: 1.05em;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .cv-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .header::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .name { font-size: 1.8em; }
+            .content { padding: 20px; }
+            .item-header { flex-direction: column; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <div class="cv-container">
+        <header class="header">
+            <div class="photo-placeholder">👤</div>
+            <h1 class="name">[VOTRE NOM PRÉNOM]</h1>
+            <p class="title">Étudiant en 1ère année - Informatique de Gestion</p>
+        </header>
+
+        <div class="content">
+            <!-- Contact -->
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="icon">📧</span>
+                    Contact
+                </h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <span>[Votre téléphone]</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <span>[votre.email@exemple.com]</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <span>[Ville, Pays]</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">💼</div>
+                        <span>linkedin.com/in/[votre-profil]</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profil -->
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="icon">🎯</span>
+                    Profil
+                </h2>
+                <p class="profile-text">
+                    Étudiant motivé en première année d'informatique de gestion, passionné par la transformation digitale des entreprises. 
+                    À la recherche d'une opportunité d'apprentissage pour développer mes compétences en développement logiciel, 
+                    gestion de bases de données et analyse de données. Rigoureuse, curieuse et doté d'un bon esprit d'équipe.
+                </p>
+            </section>
+
+            <!-- Formation -->
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="icon">🎓</span>
+                    Mes diplomes
+                </h2>
+                <div class="education-item">
+                    <div class="item-header">
+                        <span class="item-title">BFEM</span>
+                        <span class="item-date">2021-2022</span>
+                    </div>
+                    <div class="item-subtitle">Cem Abdoulaye mathurin diop  - Dakar</div>
+                      <span class="item-date">2016-2017</span>
+                </div>
+                <div class="education-item">
+                    <div class="item-header">
+                        <span class="item-title">Baccalauréat</span>
+                        <span class="item-date">2025-2026</span>
+                    </div>
+                    <div class="item-subtitle">Jean de la fontaine</div>
+                    <p>• Spécialisation : [Économie / Informatique]</p>
+                </div>
+            </section>
+
+            <!-- Compétences -->
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="icon">💻</span>
+                    Compétences
+                </h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>🖥️ Langages de programmation</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag beginner">Python (Débutant)</span>
+                            <span class="skill-tag beginner">Java (Débutant)</span>
+                            <span class="skill-tag beginner">HTML/CSS (Débutant)</span>
+                            <span class="skill-tag beginner">SQL (Débutant)</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>🗄️ Outils & Bases de données</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag beginner">MySQL</span>
+                            <span class="skill-tag beginner">Microsoft Excel</span>
+                            <span class="skill-tag beginner">Git/GitHub</span>
+                            <span class="skill-tag beginner">VS Code</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>📊 Gestion & Analyse</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag beginner">Analyse de données</span>
+                            <span class="skill-tag beginner">Gestion de projet</span>
+                            <span class="skill-tag beginner">Modélisation UML</span>
+                            <span class="skill-tag beginner">Tableaux de bord</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Expériences (Projets académiques) -->
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="icon">🚀</span>
+                    Projets Académiques & Expériences
+                </h2>
+                <div class="experience-item">
+                    <div class="item-header">
+                        <span class="item-title">Projet de développement d'application de gestion</span>
+                        <span class="item-date">2026</span>
+                    </div>
+                    <div class="item-subtitle">Projet universitaire en équipe</div>
+                    <p>• Conception et développement d'une application de gestion de bibliothèque en Java<br>
+                       • Création d'une base de données MySQL pour la gestion des emprunts<br>
+                       • Utilisation de Git pour le travail collaboratif</p>
+                </div>
+                <div class="experience-item">
+                    <div class="item-header">
+                        <span class="item-title">[Stage d'observation / Job étudiant]</span>
+                        <span class="item-date">[Dates]</span>
+                    </div>
+                    <div class="item-subtitle">[Entreprise] - [Poste]</div>
+                    <p>• [Description de vos missions : accueil client, saisie de données, assistanat...]<br>
+                       • [Compétences développées : rigueur, organisation, communication...]</p>
+                </div>
+            </section>
+
+            <!-- Langues -->
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="icon">🌍</span>
+                    Langues
+                </h2>
+                <div class="languages-list">
+                    <div class="language-item">
+                        <span class="language-name">🇫🇷 Français</span>
+                        <span class="language-level">Langue maternelle</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="language-name">🇬🇧 Anglais</span>
+                        <span class="language-level">Intermédiaire (B1/B2)</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="language-name">[Autre langue]</span>
+                        <span class="language-level">[Niveau]</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Centres d'intérêt -->
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="icon">⭐</span>
+                    Centres d'intérêt
+                </h2>
+                <div class="interests-list">
+                    <span class="interest-item">🤖 Intelligence artificielle</span>
+                    <span class="interest-item">📱 Développement mobile</span>
+                    <span class="interest-item">📊 Data Science</span>
+                    <span class="interest-item">🏃 Sport</span>
+                    <span class="interest-item">📚 Veille technologique</span>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
