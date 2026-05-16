@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Étudiant Informatique de Gestion</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-
         * {
             margin: 0;
             padding: 0;
@@ -14,69 +13,58 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 40px 20px;
-            color: #2d3748;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
         }
 
-        .cv-container {
+        .container {
             max-width: 800px;
             margin: 0 auto;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
+        /* Header */
         .header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
             color: white;
-            padding: 40px;
+            padding: 40px 50px;
             text-align: center;
-            position: relative;
         }
 
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 0;
-            right: 0;
-            height: 40px;
-            background: white;
-            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
         }
 
-        .photo-placeholder {
-            width: 120px;
-            height: 120px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            margin: 0 auto 20px;
+        .header .subtitle {
+            font-size: 1.2em;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.95em;
+        }
+
+        .contact-info span {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            border: 4px solid rgba(255,255,255,0.3);
+            gap: 8px;
         }
 
-        .name {
-            font-size: 2.5em;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: -0.5px;
-        }
-
-        .title {
-            font-size: 1.2em;
-            opacity: 0.9;
-            font-weight: 300;
-        }
-
+        /* Sections */
         .content {
-            padding: 40px;
+            padding: 40px 50px;
         }
 
         .section {
@@ -85,383 +73,294 @@
 
         .section-title {
             font-size: 1.3em;
-            font-weight: 700;
-            color: #1e3a8a;
+            color: #1e3a5f;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 3px solid #3b82f6;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            border-bottom: 3px solid #2c5282;
+            display: inline-block;
         }
 
-        .icon {
-            width: 30px;
-            height: 30px;
-            background: #3b82f6;
-            border-radius: 8px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 16px;
+        /* Profile */
+        .profile-text {
+            text-align: justify;
+            color: #555;
         }
 
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+        /* Education */
+        .education-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 3px solid #2c5282;
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px;
-            background: #f8fafc;
-            border-radius: 10px;
-            transition: transform 0.2s;
-        }
-
-        .contact-item:hover {
-            transform: translateX(5px);
-            background: #eff6ff;
-        }
-
-        .contact-icon {
-            width: 35px;
-            height: 35px;
-            background: #3b82f6;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 14px;
-        }
-
-        .education-item, .experience-item {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            border-left: 4px solid #3b82f6;
-            transition: transform 0.2s;
-        }
-
-        .education-item:hover, .experience-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 8px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .item-title {
-            font-weight: 700;
-            color: #1e3a8a;
+        .education-item h3 {
+            color: #1e3a5f;
             font-size: 1.1em;
+            margin-bottom: 5px;
         }
 
-        .item-date {
-            background: #3b82f6;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 600;
-        }
-
-        .item-subtitle {
-            color: #64748b;
+        .education-item .school {
+            color: #666;
             font-style: italic;
-            margin-bottom: 8px;
         }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-category {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 12px;
-        }
-
-        .skill-category h4 {
-            color: #1e3a8a;
-            margin-bottom: 12px;
-            font-size: 1em;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .skill-tag {
-            background: linear-gradient(135deg, #3b82f6, #1e3a8a);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 500;
-        }
-
-        .skill-tag.beginner {
-            background: linear-gradient(135deg, #94a3b8, #64748b);
-        }
-
-        .languages-list {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .language-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: #f8fafc;
-            padding: 12px 20px;
-            border-radius: 10px;
-        }
-
-        .language-name {
+        .education-item .date {
+            color: #2c5282;
             font-weight: 600;
-            color: #1e3a8a;
-        }
-
-        .language-level {
-            color: #64748b;
             font-size: 0.9em;
         }
 
-        .interests-list {
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category h4 {
+            color: #1e3a5f;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 5px 0;
+            color: #555;
             display: flex;
-            gap: 15px;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-list li::before {
+            content: "▸";
+            color: #2c5282;
+            font-weight: bold;
+        }
+
+        /* Projects */
+        .project-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #2c5282;
+        }
+
+        .project-item h4 {
+            color: #1e3a5f;
+            margin-bottom: 8px;
+        }
+
+        .project-item p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .project-tags {
+            display: flex;
             flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background: #e2e8f0;
+            color: #1e3a5f;
+            padding: 3px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+
+        /* Languages */
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .language-level {
+            background: #2c5282;
+            color: white;
+            padding: 3px 15px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+
+        /* Interests */
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .interest-item {
-            background: #eff6ff;
-            color: #1e3a8a;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 500;
-            border: 2px solid #3b82f6;
+            background: #f0f4f8;
+            padding: 8px 20px;
+            border-radius: 20px;
+            color: #1e3a5f;
+            font-size: 0.95em;
         }
 
-        .profile-text {
-            line-height: 1.8;
-            color: #4a5568;
-            font-size: 1.05em;
+        /* Footer */
+        .footer {
+            background: #1e3a5f;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
         }
 
         @media print {
             body {
                 background: white;
-                padding: 0;
             }
-            .cv-container {
-                box-shadow: none;
-                border-radius: 0;
-            }
-            .header::after {
-                display: none;
-            }
-        }
 
-        @media (max-width: 600px) {
-            .name { font-size: 1.8em; }
-            .content { padding: 20px; }
-            .item-header { flex-direction: column; }
+            .container {
+                box-shadow: none;
+            }
         }
     </style>
-<base target="_blank">
+    <base target="_blank">
 </head>
 <body>
-    <div class="cv-container">
-        <header class="header">
-            <div class="photo-placeholder">👤</div>
-            <h1 class="name">[VOTRE NOM PRÉNOM]</h1>
-            <p class="title">Étudiant en 1ère année - Informatique de Gestion</p>
-        </header>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Dior Sow Sarr</h1>
+            <div class="subtitle">Étudiant en Informatique de Gestion</div>
+            <div class="contact-info">
+                <span>📍 Hlm fass paillote lot 6h</span>
+                <span>📧 sdiorsows@gmail.com</span>
+                <span>📱 +221 78 458 59 52</span>
+            </div>
+        </div>
 
         <div class="content">
-            <!-- Contact -->
-            <section class="section">
-                <h2 class="section-title">
-                    <span class="icon">📧</span>
-                    Contact
-                </h2>
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <div class="contact-icon">📱</div>
-                        <span>[Votre téléphone]</span>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
-                        <span>[votre.email@exemple.com]</span>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <span>[Ville, Pays]</span>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">💼</div>
-                        <span>linkedin.com/in/[votre-profil]</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Profil -->
-            <section class="section">
-                <h2 class="section-title">
-                    <span class="icon">🎯</span>
-                    Profil
-                </h2>
+            <!-- Profile -->
+            <div class="section">
+                <h2 class="section-title">Profil</h2>
                 <p class="profile-text">
-                    Étudiant motivé en première année d'informatique de gestion, passionné par la transformation digitale des entreprises. 
-                    À la recherche d'une opportunité d'apprentissage pour développer mes compétences en développement logiciel, 
-                    gestion de bases de données et analyse de données. Rigoureuse, curieuse et doté d'un bon esprit d'équipe.
+                    Étudiant en première année d'Informatique de Gestion, passionné par les technologies
+                    de l'information et leur application dans le monde des affaires. Rigoureuse, curieuse et
+                    dotée d'un bon esprit d'analyse, je souhaite mettre mes compétences en programmation,
+                    gestion de bases de données et analyse de données au service d'une entreprise dynamique.
+                    À la recherche d'un stage ou d'un emploi étudiant pour concilier théorie et pratique.
                 </p>
-            </section>
+            </div>
 
-            <!-- Formation -->
-            <section class="section">
-                <h2 class="section-title">
-                    <span class="icon">🎓</span>
-                    Mes diplomes
-                </h2>
+            <!-- Education -->
+            <div class="section">
+                <h2 class="section-title">Parcours Academique</h2>
                 <div class="education-item">
-                    <div class="item-header">
-                        <span class="item-title">BFEM</span>
-                        <span class="item-date">2021-2022</span>
-                    </div>
-                    <div class="item-subtitle">Cem Abdoulaye mathurin diop  - Dakar</div>
-                      <span class="item-date">2016-2017</span>
+                    <h3>Bachelier en serie scientifique (S2)</h3>
+                    <div class="school">Jean de la Fontaine</div>
+                    <div class="date">2025 - 2026</div>
                 </div>
                 <div class="education-item">
-                    <div class="item-header">
-                        <span class="item-title">Baccalauréat</span>
-                        <span class="item-date">2025-2026</span>
-                    </div>
-                    <div class="item-subtitle">Jean de la fontaine</div>
-                    <p>• Spécialisation : [Économie / Informatique]</p>
+                    <h3>BFEM</h3>
+                    <div class="school">CEM Abdoulaye Mathurin Diop</div>
+                    <div class="date">2020 - 2021</div>
                 </div>
-            </section>
+            </div>
 
-            <!-- Compétences -->
-            <section class="section">
-                <h2 class="section-title">
-                    <span class="icon">💻</span>
-                    Compétences
-                </h2>
+            <!-- Skills -->
+            <div class="section">
+                <h2 class="section-title">Compétences</h2>
                 <div class="skills-grid">
                     <div class="skill-category">
-                        <h4>🖥️ Langages de programmation</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag beginner">Python (Débutant)</span>
-                            <span class="skill-tag beginner">Java (Débutant)</span>
-                            <span class="skill-tag beginner">HTML/CSS (Débutant)</span>
-                            <span class="skill-tag beginner">SQL (Débutant)</span>
-                        </div>
+                        <h4>💻 Programmation & Développement</h4>
+                        <ul class="skill-list">
+                            <li>HTML / CSS (bases du web)</li>
+                            <li>SQL (requêtes, modélisation)</li>
+                        </ul>
                     </div>
                     <div class="skill-category">
-                        <h4>🗄️ Outils & Bases de données</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag beginner">MySQL</span>
-                            <span class="skill-tag beginner">Microsoft Excel</span>
-                            <span class="skill-tag beginner">Git/GitHub</span>
-                            <span class="skill-tag beginner">VS Code</span>
-                        </div>
+                        <h4>📊 Outils & Bureautique</h4>
+                        <ul class="skill-list">
+                            <li>Microsoft Office (Word, Excel)</li>
+                            <li>Git / GitHub (versioning)</li>
+                            <li>IDE : Visual Studio Code</li>
+                        </ul>
                     </div>
                     <div class="skill-category">
-                        <h4>📊 Gestion & Analyse</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag beginner">Analyse de données</span>
-                            <span class="skill-tag beginner">Gestion de projet</span>
-                            <span class="skill-tag beginner">Modélisation UML</span>
-                            <span class="skill-tag beginner">Tableaux de bord</span>
-                        </div>
+                        <h4>🧠 Soft Skills</h4>
+                        <ul class="skill-list">
+                            <li>Esprit d'analyse et logique</li>
+                            <li>Résolution de problèmes</li>
+                            <li>Autonomie & apprentissage rapide</li>
+                            <li>Travail en équipe</li>
+                        </ul>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- Expériences (Projets académiques) -->
-            <section class="section">
-                <h2 class="section-title">
-                    <span class="icon">🚀</span>
-                    Projets Académiques & Expériences
-                </h2>
-                <div class="experience-item">
-                    <div class="item-header">
-                        <span class="item-title">Projet de développement d'application de gestion</span>
-                        <span class="item-date">2026</span>
+            <!-- Academic Projects -->
+            <div class="section">
+                <h2 class="section-title">Projets Académiques</h2>
+                <div class="project-item">
+                    <h4>🗄️ Conception d'une Base de Données</h4>
+                    <p>Modélisation complète d'une base de données pour un système de réservation de salles.
+                        Création du modèle conceptuel (MCD), logique (MLD) et physique. Écriture de requêtes SQL
+                        complexes (jointures, agrégations, sous-requêtes).</p>
+                    <div class="project-tags">
+                        <span class="tag">SQL</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">Modélisation Merise</span>
                     </div>
-                    <div class="item-subtitle">Projet universitaire en équipe</div>
-                    <p>• Conception et développement d'une application de gestion de bibliothèque en Java<br>
-                       • Création d'une base de données MySQL pour la gestion des emprunts<br>
-                       • Utilisation de Git pour le travail collaboratif</p>
                 </div>
-                <div class="experience-item">
-                    <div class="item-header">
-                        <span class="item-title">[Stage d'observation / Job étudiant]</span>
-                        <span class="item-date">[Dates]</span>
+                <div class="project-item">
+                    <h4>📊 Analyse de Données avec Excel</h4>
+                    <p>Projet d'analyse d'un jeu de données commercial (ventes, clients, produits).
+                        Utilisation de tableaux croisés dynamiques, formules avancées et graphiques pour
+                        produire un tableau de bord interactif.</p>
+                    <div class="project-tags">
+                        <span class="tag">Excel avancé</span>
+                        <span class="tag">Tableaux croisés dynamiques</span>
+                        <span class="tag">Dataviz</span>
                     </div>
-                    <div class="item-subtitle">[Entreprise] - [Poste]</div>
-                    <p>• [Description de vos missions : accueil client, saisie de données, assistanat...]<br>
-                       • [Compétences développées : rigueur, organisation, communication...]</p>
                 </div>
-            </section>
+            </div>
 
-            <!-- Langues -->
-            <section class="section">
-                <h2 class="section-title">
-                    <span class="icon">🌍</span>
-                    Langues
-                </h2>
-                <div class="languages-list">
-                    <div class="language-item">
-                        <span class="language-name">🇫🇷 Français</span>
-                        <span class="language-level">Langue maternelle</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">🇬🇧 Anglais</span>
-                        <span class="language-level">Intermédiaire (B1/B2)</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">[Autre langue]</span>
-                        <span class="language-level">[Niveau]</span>
-                    </div>
+            <!-- Languages -->
+            <div class="section">
+                <h2 class="section-title">Langues</h2>
+                <div class="language-item">
+                    <span>Français</span>
+                    <span class="language-level">Avancé (C1/C2)</span>
                 </div>
-            </section>
+                <div class="language-item">
+                    <span>Anglais</span>
+                    <span class="language-level">Intermédiaire (B1)</span>
+                </div>
+                <div class="language-item">
+                    <span>Wolof</span>
+                    <span class="language-level">Langue maternelle (C1/C2)</span>
+                </div>
+            </div>
 
-            <!-- Centres d'intérêt -->
-            <section class="section">
-                <h2 class="section-title">
-                    <span class="icon">⭐</span>
-                    Centres d'intérêt
-                </h2>
-                <div class="interests-list">
-                    <span class="interest-item">🤖 Intelligence artificielle</span>
-                    <span class="interest-item">📱 Développement mobile</span>
-                    <span class="interest-item">📊 Data Science</span>
-                    <span class="interest-item">🏃 Sport</span>
-                    <span class="interest-item">📚 Veille technologique</span>
+            <!-- Interests -->
+            <div class="section">
+                <h2 class="section-title">Centres d'Intérêt</h2>
+                <div class="interests">
+                    <span class="interest-item">💻 Développement web (projets personnels)</span>
+                    <span class="interest-item">🎮 gaming</span>
+                    <span class="interest-item">🏃 Sport / Fitness</span>
                 </div>
-            </section>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2024 Dior Sow Sarr 
         </div>
     </div>
 </body>
+
 </html>
