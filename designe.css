@@ -1,3 +1,8 @@
+html {
+  background: #0f172a;
+  overscroll-behavior: none;
+}
+
 h1 {
   text-align: center;
   color: white;
