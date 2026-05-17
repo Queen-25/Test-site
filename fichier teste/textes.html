@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Glass Navbar</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      background:#07152d;
+    }
+
+    .navbar{
+      position:relative;
+      padding:15px 20px;
+      background:rgba(255,255,255,0.05);
+      border-radius:60px;
+      backdrop-filter:blur(15px);
+      box-shadow:0 15px 35px rgba(0,0,0,0.5);
+      border:0.5px solid #ccc;
+    }
+
+    .navbar ul{
+      position:relative;
+      display:flex;
+      gap:10px;
+    }
+
+    .navbar ul li{
+      list-style:none;
+      position:relative;
+      z-index:2;
+    }
+
+    .navbar ul li a{
+      position:relative;
+      text-decoration:none;
+      color:#fff;
+      font-size:1em;
+      padding:15px 30px;
+      display:inline-block;
+      border-radius:30px;
+      transition:0.5s;
+    }
+
+    .navbar ul li a:hover{
+      color:#000;
+    }
+
+    .indicator{
+      position:absolute;
+      top:0;
+      left:0;
+      width:120px;
+      height:100%;
+      background:linear-gradient(45deg,#00ccff,#00ffff);
+      border-radius:30px;
+      transition:0.5s;
+      box-shadow:
+        0 0 15px #00ccff,
+        0 0 30px #00ccff,
+        0 0 60px #00ccff;
+    }
+
+    .navbar ul li:nth-child(1):hover ~ .indicator{
+      transform:translateX(0);
+    }
+
+    .navbar ul li:nth-child(2):hover ~ .indicator{
+      transform:translateX(120px);
+    }
+
+    .navbar ul li:nth-child(3):hover ~ .indicator{
+      transform:translateX(240px);
+    }
+
+    .navbar ul li:nth-child(4):hover ~ .indicator{
+      transform:translateX(380px);
+    }
+
+    .navbar ul li:nth-child(5):hover ~ .indicator{
+      transform:translateX(520px);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Contact</a></li>
+
+      <div class="indicator"></div>
+    </ul>
+  </nav>
+
+</body>
+</html>
