@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    </header>
+    <nav>
+        <ul>
+            <li class="active"><a href="accueil.html" title="Page d'accueil"> accueil</a></li>
+            <li><a href="contacte.html">contacte</a></li>
+            <li><a href="profil.html">profil</a></li>
+            <li><a href="https://www.st-michel.sn/" target="_blank">site ucao</a></li>
+            <li><a href="connexion.html">Se connecter</a></li>
+            <li><a href="inscription.html">S'inscrire</a></li>
+            <div class="indicator"></div>
+        </ul>
+    </nav>
+    <h3>Presentation</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis aliquam placeat impedit asperiores
+        quisquam quo nobis, suscipit commodi modi vero? Magnam provident minima voluptates deserunt tempora
+        repellat explicabo, iusto repellendus.</p>
+    <script>
+        var nombre = prompt('Entrer un nombre: ');
+        //isNaN() est une fonction qui permet de vérifier si une valeur n'est pas un nombre
+        if (isNaN(nombre) || nombre === "") {
+            alert("erreur : vous devais saisir un nombre");
+        }
+        else {
+            var carre = nombre * nombre;
+            alert("le carre de " + nombre + " est : " + carre);
+        }
+    </script>
+</body>
+
+</html>

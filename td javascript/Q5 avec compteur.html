@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exercice 1 Question 5</title>
+</head>
+
+<body>
+
+    <script>
+
+let login, motdepasse;
+let compteur = 0;
+
+do {
+
+    compteur++;
+
+    login = prompt("Entrez le login :");
+    motdepasse = prompt("Entrez le mot de passe :");
+
+    if (login == "admi" && motdepasse == "passer") {
+        //break est une instruction qui permet de sortir d'une boucle
+        alert("Bienvenue dans la page d'administration");
+        break;
+
+    }
+    //else if est une instruction qui permet de vérifier plusieurs conditions
+    else if (login != "admi") {
+        //alert() est une fonction qui permet d'afficher un message à l'utilisateur
+        alert("Login incorrect");
+
+    }
+
+    else if (motdepasse != "passer") {
+
+        alert("Mot de passe incorrect");
+
+    }
+    //if est une instruction qui permet de vérifier une condition
+    if (compteur == 3) {
+
+        alert("Nombre maximum de tentatives atteint");
+        break;
+
+    }
+    //else est une instruction qui permet de définir une action à effectuer lorsque les conditions précédentes ne sont pas vérifiées
+} while (login != "admi" || motdepasse != "passer");
+    //do...while est une structure de contrôle qui permet d'exécuter un bloc de code au moins une fois, puis de répéter l'exécution tant qu'une condition est vraie
+</script>
+    </script>
+
+</body>
+
+</html>

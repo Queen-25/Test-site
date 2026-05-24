@@ -5,6 +5,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+   <!-- <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .menu {
+            position: relative;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 60px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 0.5px solid #ccc;
+        }
+
+        .menu ul {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            display: flex;
+            gap: 10px;
+        }
+
+        .menu ul li {
+            list-style: none;
+            position: relative;
+            z-index: 2;
+        }
+
+        .menu ul li a {
+            position: relative;
+            text-decoration: none;
+            color: #fff;
+            font-size: 1em;
+            padding: 15px 30px;
+            display: inline-block;
+            border-radius: 30px;
+            transition: 0.5s;
+        }
+
+        .indicator {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120px;
+            height: 100%;
+            background: linear-gradient(45deg, #7f0fa8, #d00fda);
+            border-radius: 30%;
+            transition: 0.5s;
+            box-shadow:
+                0 0 15px #d00fda,
+                0 0 30px #d00fda,
+                0 0 60px #d00fda,
+                0 0 75px #d00fda,
+                inset -5px -5px rgba(255, 255, 255, .3),
+                inset -10px -10px rgba(255, 255, 255, .3),
+                inset -15px -15px rgba(255, 255, 255, .3),
+                inset -20px -20px rgba(255, 255, 255, .3),
+                inset -25px -25px rgba(255, 255, 255, .3);
+            pointer-events: none;
+        }
+
+        .menu ul li:nth-child(1).active~.indicator .menu ul li:nth-child(1):hover~.indicator {
+            transform: translateX(0);
+        }
+
+        .menu ul li:nth-child(2).active~.indicator,
+        .menu ul li:nth-child(2):hover~.indicator {
+            transform: translateX(5px);
+        }
+
+        .menu ul li:nth-child(3).active~.indicator,
+        .menu ul li:nth-child(3):hover~.indicator {
+            transform: translateX(5px);
+        }
+
+        .menu ul li:nth-child(4).active~.indicator,
+        .menu ul li:nth-child(4):hover~.indicator {
+            transform: translateX(5px);
+        }
+
+        .menu ul li:nth-child(5).active~.indicator,
+        .menu ul li:nth-child(5):hover~.indicator {
+            transform: translateX(5px);
+        }
+    </style>-->
     <link rel="stylesheet" href="designe.css">
 </head>
 
@@ -19,6 +106,9 @@
                 <li><a href="contacte.html">contacte</a></li>
                 <li><a href="profil.html">profil</a></li>
                 <li><a href="https://www.st-michel.sn/" target="_blank">site ucao</a></li>
+                <li class="active"><a href="connexion.html">Se connecter</a></li>
+                <li><a href="inscription.html">S'inscrire</a></li>
+                <div class="indicator"></div>
             </ul>
         </nav>
         <video autoplay muted loop>
@@ -29,11 +119,11 @@
                 <legend style="color: white;">Se connecter</legend>
                 <form action="">
                     <label style="color: white;" for="">login</label><br>
-                    <input style="background-color: black; color: rgb(16, 14, 14);" class="champ" type="email" placeholder="email@example.com"
-                        required><br>
+                    <input style="background-color: black; color: rgb(16, 14, 14);" class="champ" type="email"
+                        placeholder="email@example.com" required><br>
                     <label style="color: white;" for="">Mot de passe</label><br>
-                    <input style="background-color: black; color: rgb(84, 28, 153);" class="champ" type="password" placeholder="password"
-                        required><br>
+                    <input style="background-color: black; color: rgb(84, 28, 153);" class="champ" type="password"
+                        placeholder="password" required><br>
                     <input style=" color: black;" class="champ" type="submit"><br>
                     <button><a style="color: black;" href="inscription.html">Creer un compte</a></button>
                 </form>
@@ -45,6 +135,42 @@
             </p>
         </footer>
         <script src="script.js"></script>
+       <!--<script>
+            const indicator = document.querySelector('.indicator');
+            const items = document.querySelectorAll('.menu ul li');
+
+            function moveIndicator(item) {
+
+                indicator.style.width = item.offsetWidth + "px";
+
+                indicator.style.left = item.offsetLeft + "px";
+            }
+
+            items.forEach((item) => {
+
+                item.addEventListener('mouseenter', () => {
+                    moveIndicator(item);
+                });
+
+            });
+
+            // retour sur la page active
+            document.querySelector('.menu').addEventListener('mouseleave', () => {
+
+                const activeItem = document.querySelector('.menu ul li.active');
+
+                if (activeItem) {
+                    moveIndicator(activeItem);
+                }
+            });
+
+            // position initiale
+            const activeItem = document.querySelector('.menu ul li.active');
+
+            if (activeItem) {
+                moveIndicator(activeItem);
+            }
+        </script>-->
 </body>
 
 </html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var reponse = prompt("la couleur de fond actuelle vous plait-elle? ");
+        if(reponse == "oui"){
+            alert("aucun changement ne sera effectué");
+        }else{
+            var couleur = prompt("entrer la couleur de votre choix: ");
+            //document.body.style.backgroundColor est une propriété qui permet de changer la couleur de fond d'une page web
+            //document est un objet qui représente la page web,
+            //  body est un sous-objet de l'objet document qui représente le corps de la page web,
+            //  style est une propriété de l'objet body qui permet de modifier les styles CSS du corps de la page web, 
+            // backgroundColor est une propriété de style qui permet de changer la couleur de fond du corps de la page web
+            document.body.style.backgroundColor = couleur;
+            alert("la couleur de fond a été changée en " + couleur);
+        }
+    </script>
+</body>
+</html>
