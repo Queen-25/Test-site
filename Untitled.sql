@@ -23,7 +23,7 @@ mysql> create table etudiant (
     -> id_etudiant INT AUTO_INCREMENT PRIMARY KEY,
     -> Nom VARCHAR(30) NOT NULL,
     -> Prenom VARCHAR(30) NOT NULL,
-    -> EMail VARCHAR(30) NOT NULL,
+    -> EMail VARCHAR(30) UNIQUE,
     -> Telephone VARCHAR(30) NOT NULL,
     -> adresse VARCHAR(50) NOT NULL,
     -> Age INT CHECK(age>=18)
