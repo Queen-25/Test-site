@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagramme ERD</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: black;
+            padding: 30px;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #erd {
+            width: 30%;
+            overflow-x: auto;
+        }
+
+        #erd svg {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Texte en noir */
+        #erd svg text {
+            fill: black !important;
+            font-size: 15px !important;
+            font-weight: bold;
+        }
+
+        /* Bordures */
+        #erd svg rect {
+            stroke: white !important;
+            stroke-width: 2 !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="erd"></div>
+
+    <script type="module">
+
+        import mermaid from 'https://esm.sh/mermaid@11/dist/mermaid.esm.min.mjs';
+
+        await document.fonts.ready;
+
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'base',
+
+            themeVariables: {
+
+                darkMode: true,
+
+                /* Texte */
+                fontSize: '15px',
+                fontFamily: 'Arial',
+
+                textColor: '#000000',
+                primaryTextColor: '#000000',
+
+                /* Lignes */
+                lineColor: '#ffffff',
+
+                /* Fond des tableaux en blanc */
+                primaryColor: '#ffffff',
+
+                /* Bordures */
+                primaryBorderColor: '#ffffff',
+
+                /* Fond des relations */
+                edgeLabelBackground: '#ffffff',
+
+                /* Lignes internes */
+                attributeBackgroundColorEven: '#f0f0f0',
+                attributeBackgroundColorOdd: '#ffffff',
+            }
+        });
+
+        const diagram = `
+
+erDiagram
+
+    ETUDIANT {
+        int id_etudiant PK
+        varchar(50) nom
+        varchar(50) prenom
+        varchar(30) email
+        varchar(20) telephone
+        varchar(20) adresse
+    }
+
+    BIBLIOTHECAIRE {
+        int id_bibliothecaire PK
+        varchar(50) nom
+        varchar(50) prenom
+        date Datenaiss
+    }
+
+    CATEGORIE {
+        int id_categorie PK
+        varchar(100) libelle
+        varchar(255) description
+        varchar(50) nom
+    }
+
+    LIVRE {
+        int id_livre PK
+        varchar(25) titre
+        varchar(30) auteur
+        date Date_publication
+    }
+
+    EMPRUNT {
+        int id_emprunt PK
+        date date_emprunt
+        date date_retour
+        int id_etudiant FK
+        int id_livre FK
+        int id_bibliothecaire FK
+    }
+
+    RETOUR {
+        int id_retour PK
+        date date_retour
+        int id_bibliothecaire FK
+        int id_emprunt FK
+    }
+
+    PENALITE {
+        int id_penalite PK
+        float montant
+        varchar(255) motif
+        int id_emprunt FK
+    }
+
+    ETUDIANT ||--o{ EMPRUNT : "Faire"
+    BIBLIOTHECAIRE ||--o{ EMPRUNT : "Enregistrer"
+    LIVRE ||--o{ CATEGORIE : "Avoir"
+    EMPRUNT ||--o{ LIVRE : "Concerner"
+    RETOUR ||--o| EMPRUNT : "Cloturer"
+    PENALITE ||--o| EMPRUNT : "Generer"
+    BIBLIOTHECAIRE ||--o{ RETOUR : "Valider"
+
+`;
+
+        const { svg } = await mermaid.render('erd-svg', diagram);
+
+        document.getElementById('erd').innerHTML = svg;
+
+        /* Arrondir les tableaux */
+        document.querySelectorAll('#erd svg .node').forEach(node => {
+
+            const firstPath = node.querySelector('path[d]');
+
+            if (!firstPath) return;
+
+            const d = firstPath.getAttribute('d');
+
+            const nums = d.match(/-?[\d.]+/g)?.map(Number);
+
+            if (!nums || nums.length < 8) return;
+
+            const xs = [nums[0], nums[2], nums[4], nums[6]];
+            const ys = [nums[1], nums[3], nums[5], nums[7]];
+
+            const x = Math.min(...xs);
+            const y = Math.min(...ys);
+
+            const w = Math.max(...xs) - x;
+            const h = Math.max(...ys) - y;
+
+            const rect = document.createElementNS(
+                'http://www.w3.org/2000/svg',
+                'rect'
+            );
+
+            rect.setAttribute('x', x);
+            rect.setAttribute('y', y);
+            rect.setAttribute('width', w);
+            rect.setAttribute('height', h);
+
+            rect.setAttribute('rx', '10');
+
+            /* Fond blanc */
+            rect.setAttribute('fill', '#ffffff');
+
+            /* Bordure blanche */
+            rect.setAttribute('stroke', '#ffffff');
+
+            rect.setAttribute('stroke-width', '2');
+
+            firstPath.replaceWith(rect);
+        });
+
+        /* Supprimer les bordures internes */
+        document.querySelectorAll(
+            '#erd svg .row-rect-odd path, #erd svg .row-rect-even path'
+        ).forEach(p => {
+            p.setAttribute('stroke', 'none');
+        });
+
+    </script>
+
+</body>
+
+</html>
