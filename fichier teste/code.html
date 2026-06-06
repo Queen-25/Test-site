@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lettre de Motivation - Stage Informatique de Gestion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header .subtitle {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .edit-mode-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .edit-mode-badge:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .content {
+            padding: 50px;
+            position: relative;
+        }
+
+        .letter-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .sender-info,
+        .recipient-info {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .info-block {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
+        }
+
+        .info-block:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-block h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .editable {
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+            cursor: text;
+            display: inline-block;
+            min-width: 50px;
+        }
+
+        .editable:hover {
+            border-bottom-color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .editable:focus {
+            outline: none;
+            border-bottom-color: #764ba2;
+            background: rgba(118, 75, 162, 0.05);
+        }
+
+        .subject-line {
+            margin: 30px 0;
+            padding: 15px 20px;
+            background: linear-gradient(to right, #f8f9fa, white);
+            border-left: 4px solid #764ba2;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .letter-body {
+            line-height: 1.8;
+            color: #444;
+            text-align: justify;
+        }
+
+        .letter-body p {
+            margin-bottom: 20px;
+            text-indent: 30px;
+        }
+
+        .letter-body p:first-of-type {
+            text-indent: 0;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #5a67d8;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .skill-tag.active {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+        }
+
+        .signature {
+            margin-top: 50px;
+            text-align: right;
+        }
+
+        .signature-line {
+            font-style: italic;
+            color: #667eea;
+            font-size: 1.2em;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-print {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-reset {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s;
+        }
+
+        .typing-effect::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .date-display {
+            text-align: right;
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+
+            .controls,
+            .edit-mode-badge,
+            .skills-tags {
+                display: none !important;
+            }
+
+            .header {
+                background: #667eea !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .editable {
+                border: none !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .content {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .controls {
+                bottom: 10px;
+                right: 10px;
+                flex-direction: column;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .word-count {
+            position: absolute;
+            bottom: 20px;
+            left: 50px;
+            color: #999;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container fade-in">
+        <div class="progress-bar" id="progressBar"></div>
+
+        <div class="header">
+            <div class="edit-mode-badge" onclick="toggleEditMode()">✏️ Mode Édition</div>
+            <h1>Lettre de Motivation</h1>
+            <div class="subtitle">Stage de 2 mois — Informatique de Gestion (1ère année)</div>
+        </div>
+
+        <div class="content">
+            <div class="date-display" id="currentDate"></div>
+
+            <div class="letter-header">
+                <div class="sender-info">
+                    <div class="info-block">
+                        <h3>📬 Expéditeur</h3>
+                        <div class="editable" contenteditable="true" data-placeholder="Prénom NOM">Jean DUPONT</div><br>
+                        <div class="editable" contenteditable="true" data-placeholder="Adresse">42 Rue de l'Innovation
+                        </div><br>
+                        <div class="editable" contenteditable="true" data-placeholder="Code postal, Ville">75001 Paris
+                        </div><br>
+                        <div class="editable" contenteditable="true" data-placeholder="Téléphone">06 12 34 56 78</div>
+                        <br>
+                        <div class="editable" contenteditable="true" data-placeholder="Email">jean.dupont@email.com
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recipient-info">
+                    <div class="info-block">
+                        <h3>🏢 Destinataire</h3>
+                        <div class="editable" contenteditable="true" data-placeholder="Nom du responsable">Madame,
+                            Monsieur</div><br>
+                        <div class="editable" contenteditable="true" data-placeholder="Nom de l'entreprise">
+                            TechSolutions SAS</div><br>
+                        <div class="editable" contenteditable="true" data-placeholder="Adresse">15 Avenue des
+                            Champs-Élysées</div><br>
+                        <div class="editable" contenteditable="true" data-placeholder="Code postal, Ville">75008 Paris
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subject-line">
+                <strong>Objet :</strong> Candidature pour un stage de 2 mois en informatique de gestion — <span
+                    class="editable" contenteditable="true">juillet-août 2026</span>
+            </div>
+
+            <div class="skills-tags" id="skillsContainer">
+                <div class="skill-tag active" onclick="toggleSkill(this)">SQL</div>
+                <div class="skill-tag active" onclick="toggleSkill(this)">Python</div>
+                <div class="skill-tag" onclick="toggleSkill(this)">Java</div>
+                <div class="skill-tag active" onclick="toggleSkill(this)">Excel VBA</div>
+                <div class="skill-tag" onclick="toggleSkill(this)">SAP</div>
+                <div class="skill-tag active" onclick="toggleSkill(this)">Analyse de données</div>
+                <div class="skill-tag" onclick="toggleSkill(this)">Power BI</div>
+                <div class="skill-tag" onclick="toggleSkill(this)">Gestion de projet</div>
+            </div>
+
+            <div class="letter-body" id="letterBody">
+                <p>
+                    Madame, Monsieur,
+                </p>
+
+                <p>
+                    Actuellement étudiant en <span class="highlight">première année d'informatique de gestion</span> à
+                    <span class="editable" contenteditable="true" data-placeholder="votre école">l'IUT de Paris</span>,
+                    je suis à la recherche d'un stage de 2 mois pour la période du <span class="editable"
+                        contenteditable="true">1er juillet</span> au <span class="editable" contenteditable="true">31
+                        août 2026</span>. Passionné par les technologies de l'information et leur application
+                    stratégique au monde de l'entreprise, je souhaite mettre en pratique les compétences acquises au
+                    cours de cette première année de formation au sein de votre structure.
+                </p>
+
+                <p>
+                    Au cours de mon année universitaire, j'ai pu développer des bases solides en <span class="editable"
+                        contenteditable="true">programmation (Python, SQL)</span>, en <span class="highlight">conception
+                        et administration de bases de données</span>, ainsi qu'en analyse et modélisation des processus
+                    métiers. J'ai notamment réalisé un projet académique consistant à <span class="editable"
+                        contenteditable="true" data-placeholder="décrivez votre projet">concevoir une base de données
+                        relationnelle complète pour la gestion des stocks d'une entreprise fictive</span>, me permettant
+                    ainsi de maîtriser les outils de modélisation MERISE et le langage SQL.
+                </p>
+
+                <p>
+                    Votre entreprise, reconnue pour <span class="editable" contenteditable="true"
+                        data-placeholder="spécificité de l'entreprise">son expertise dans la transformation digitale des
+                        PME</span>, représente pour moi une opportunité exceptionnelle de découvrir le fonctionnement
+                    concret d'un service informatique en entreprise. Je suis particulièrement motivé à l'idée de
+                    contribuer à <span class="editable" contenteditable="true">l'optimisation de vos processus de
+                        reporting et d'aide à la décision</span> et d'apprendre auprès de professionnels expérimentés
+                    dans le domaine de la gestion des systèmes d'information.
+                </p>
+
+                <p>
+                    <span class="highlight">Rigoureux, autonome et doté d'un bon esprit d'analyse</span>, je suis
+                    convaincu que ce stage me permettra de consolider mes acquis académiques tout en apportant une
+                    valeur ajoutée concrète à votre équipe. Ma capacité d'adaptation et mon enthousiasme pour les
+                    nouvelles technologies me permettront de m'intégrer rapidement à vos méthodes de travail et de
+                    répondre efficacement aux missions qui me seront confiées.
+                </p>
+
+                <p>
+                    Je me tiens à votre entière disposition pour un entretien au cours duquel je pourrai vous exposer
+                    plus en détail ma motivation et répondre à vos questions. Je vous remercie de l'attention que vous
+                    porterez à ma candidature.
+                </p>
+
+                <p>
+                    Dans l'attente de votre réponse, je vous prie d'agréer, Madame, Monsieur, l'expression de mes
+                    salutations distinguées.
+                </p>
+            </div>
+
+            <div class="signature">
+                <div class="signature-line">
+                    <span class="editable" contenteditable="true" data-placeholder="Votre prénom et nom">Jean
+                        Dupont</span>
+                </div>
+            </div>
+
+            <div class="word-count" id="wordCount">Nombre de mots : <span id="count">0</span></div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn btn-reset" onclick="resetForm()">
+            <span>↺</span> Réinitialiser
+        </button>
+        <button class="btn btn-print" onclick="window.print()">
+            <span>🖨️</span> Imprimer / PDF
+        </button>
+    </div>
+
+    <script>
+        // Afficher la date du jour
+        const dateElement = document.getElementById('currentDate');
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        dateElement.textContent = new Date().toLocaleDateString('fr-FR', options);
+
+        // Gestion des compétences cliquables
+        function toggleSkill(element) {
+            element.classList.toggle('active');
+            updateLetterContent();
+        }
+
+        // Mettre à jour le contenu de la lettre en fonction des compétences sélectionnées
+        function updateLetterContent() {
+            const activeSkills = document.querySelectorAll('.skill-tag.active');
+            const skillsList = Array.from(activeSkills).map(s => s.textContent).join(', ');
+
+            // On pourrait mettre à jour dynamiquement le texte ici si besoin
+            updateWordCount();
+        }
+
+        // Compteur de mots
+        function updateWordCount() {
+            const body = document.getElementById('letterBody');
+            const text = body.innerText || body.textContent;
+            const count = text.trim().split(/\s+/).length;
+            document.getElementById('count').textContent = count;
+        }
+
+        // Barre de progression au scroll
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + "%";
+        });
+
+        // Mode édition
+        let editMode = true;
+        function toggleEditMode() {
+            editMode = !editMode;
+            const editables = document.querySelectorAll('[contenteditable]');
+            const badge = document.querySelector('.edit-mode-badge');
+
+            editables.forEach(el => {
+                el.contentEditable = editMode;
+            });
+
+            badge.textContent = editMode ? '✏️ Mode Édition' : '👁️ Mode Lecture';
+            badge.style.background = editMode ? 'rgba(255,255,255,0.2)' : 'rgba(72, 187, 120, 0.3)';
+        }
+
+        // Sauvegarde locale automatique
+        document.querySelectorAll('[contenteditable]').forEach(el => {
+            el.addEventListener('blur', () => {
+                localStorage.setItem('lm_' + el.dataset.placeholder, el.innerHTML);
+            });
+
+            // Restaurer les données sauvegardées
+            const saved = localStorage.getItem('lm_' + el.dataset.placeholder);
+            if (saved && el.textContent === el.dataset.placeholder) {
+                el.innerHTML = saved;
+            }
+        });
+
+        // Réinitialisation
+        function resetForm() {
+            if (confirm('Voulez-vous vraiment réinitialiser tous les champs ?')) {
+                localStorage.clear();
+                location.reload();
+            }
+        }
+
+        // Animation d'apparition progressive du texte
+        window.addEventListener('load', () => {
+            updateWordCount();
+
+            // Effet de frappe sur le titre
+            const title = document.querySelector('.header h1');
+            const originalText = title.textContent;
+            title.textContent = '';
+            title.classList.add('typing-effect');
+
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    title.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                } else {
+                    title.classList.remove('typing-effect');
+                }
+            };
+            setTimeout(typeWriter, 500);
+        });
+
+        // Avertissement avant de quitter si des modifications non sauvegardées
+        let hasChanges = false;
+        document.querySelectorAll('[contenteditable]').forEach(el => {
+            el.addEventListener('input', () => {
+                hasChanges = true;
+                updateWordCount();
+            });
+        });
+
+        window.addEventListener('beforeunload', (e) => {
+            if (hasChanges) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
