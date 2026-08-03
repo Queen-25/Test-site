@@ -1,0 +1,157 @@
+/* ============================================================
+   FICHIER : css/apropos.css  (style SPECIAL de la page A propos)
+   Appele par apropos.html en plus de css/style.css.
+   Il gere : les cartes Horaires et Adresse, et le bloc bleu "Nos Services".
+   ============================================================ */
+
+/* 1. LES DEUX CARTES COTE A COTE (Horaires + Adresse) */
+.about-info-grid {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.info-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 35px;
+    flex: 1; /* les deux cartes ont la meme largeur */
+    box-shadow: 0 4px 15px rgba(20, 26, 69, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: fondu 0.6s ease both; /* apparition en fondu */
+}
+
+.info-card:nth-child(2) { animation-delay: 0.15s; }
+
+.info-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(20, 26, 69, 0.15);
+}
+
+.info-card h3 {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 22px;
+    color: #141A45;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(20, 26, 69, 0.08);
+    padding-bottom: 12px;
+    display: flex;        /* aligne l'icone et le texte sur une ligne */
+    align-items: center;
+    gap: 10px;
+}
+
+/* Taille de l'icone du titre (sa couleur rouge est dans le fichier .svg) */
+.info-card h3 .icone {
+    width: 22px;
+    height: 22px;
+}
+
+/* La liste des horaires : le jour a gauche, l'heure a droite */
+.schedule-list {
+    list-style: none;
+}
+
+.schedule-list li {
+    display: flex;
+    justify-content: space-between; /* ecarte le jour et l'heure */
+    padding: 12px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.schedule-list li:last-child {
+    border-bottom: none; /* pas de trait sous le dernier */
+}
+
+.schedule-list .time {
+    font-weight: 700;
+    color: #7C170D; /* les heures en rouge */
+}
+
+.schedule-list .closed {
+    color: #a0aec0; /* "Ferme" en gris */
+}
+
+/* La carte Adresse */
+.address-card p {
+    font-size: 14px;
+    color: #4a5568;
+    margin-bottom: 6px;
+}
+
+.company-title {
+    font-size: 15px;
+    color: #141A45;
+}
+
+.highlight-city {
+    color: #7C170D; /* la ville en rouge */
+    font-weight: 600;
+}
+
+.address-contact {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #edf2f7;
+}
+
+/* 2. LE GRAND BLOC BLEU "NOS SERVICES" */
+.services-dark-block {
+    background-color: #141A45;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 45px 30px;
+    text-align: center;
+}
+
+.services-dark-block h3 {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 26px;
+    margin-bottom: 40px;
+}
+
+.services-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.service-item {
+    flex: 1;
+    max-width: 300px;
+    transition: transform 0.25s ease; /* petit mouvement au survol */
+}
+
+/* Au survol d'un service, il monte legerement */
+.service-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Le rond clair qui contient l'icone du service */
+.circle-icon {
+    background: #ECE1D5; /* creme de la charte */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 15px; /* centre le rond et le decolle du titre */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Taille de l'icone a l'interieur du rond */
+.circle-icon .icone {
+    width: 26px;
+    height: 26px;
+}
+
+.service-item h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.service-item p {
+    font-size: 12.5px;
+    opacity: 0.8;
+}

@@ -1,0 +1,138 @@
+/* ==========================================================================
+   9. PAGE CONTACT (FORMULAIRE & BLOC INFERIEUR)
+   ========================================================================== */
+.contact-section {
+    max-width: 750px;
+    margin: 0 auto 35px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.half-width {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 13.5px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    background-color: #f8f9fa;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #7C170D;
+    background-color: #ffffff;
+}
+
+.submit-container {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.btn-submit {
+    background-color: #7C170D;
+    color: #ffffff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.form-note {
+    font-size: 12px;
+    color: #718096;
+    margin-top: 10px;
+}
+
+.alt-contact-box {
+    max-width: 750px;
+    margin: 0 auto;
+    background-color: #141A45;
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.alt-contact-box h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.alt-contact-info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.contact-item .label {
+    font-size: 12px;
+    color: #a0aec0;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.contact-item .value {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* Erreurs et validations JS */
+.error-msg {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border-left: 5px solid #7C170D;
+}
+
+.success-msg {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border-left: 5px solid #28a745;
+}
+/* 5. STRUCTURE DES TITRES DE PAGES (À PROPOS & CONTACT) */
+.about-header, .contact-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about-header h2, .contact-header h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 38px;
+    color: #141A45;
+    font-weight: bold;
+}
+
+.about-header p, .contact-header p {
+    font-size: 14px;
+    color: #556073;
+    margin-top: 5px;
+}

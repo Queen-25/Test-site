@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  FICHIER : contact.html  (la page CONTACT)
+  Elle contient un formulaire. Quand on clique sur "Envoyer",
+  c'est js/script.js qui verifie les champs (grace a l'id du formulaire
+  "cafet-contact-form") et affiche un message dans la boite "form-message".
+  Fichiers utilises : css/style.css, css/contact.css, js/script.js
+  ============================================================
+-->
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COFFEE LOFT UCAO - Contact</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+
+<body>
+
+    <!-- EN-TETE (le meme que sur les autres pages) -->
+    <header>
+        <div class="logo">
+            <img src="Projet Cafeteria/image logo/LogoCoffeeLoftUcao.svg" alt="Logo" class="header-logo-img">
+            <div class="logo-text">
+                <h1>COFFEE LOFT UCAO</h1>
+                <p>Cafétéria Universitaire</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="apropos.html">À propos</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="contact-header">
+            <h2>Contactez-nous</h2>
+            <p>Une question, une suggestion ? Écrivez-nous.</p>
+        </div>
+
+        <div class="contact-section">
+
+            <!-- Boite VIDE : le JavaScript y ecrit le message d'erreur ou de succes -->
+            <div id="form-message"></div>
+
+            <!-- FORMULAIRE : son id "cafet-contact-form" est utilise par js/script.js.
+                 Chaque champ a un id (nom, prenom, email, message) que le JS lit. -->
+            <form id="cafet-contact-form">
+
+                <!-- Une ligne avec deux champs : Nom et Prenom -->
+                <div class="form-row">
+                    <div class="form-group half-width">
+                        <label for="nom">
+                            <!-- Icone : image .svg rangee dans "Projet Cafeteria/icones" -->
+                            <img class="icone" src="Projet Cafeteria/icones/personne.svg" alt="">
+                            Nom *
+                        </label>
+                        <input type="text" id="nom" placeholder="Votre nom">
+                    </div>
+                    <div class="form-group half-width">
+                        <label for="prenom">
+                            <img class="icone" src="Projet Cafeteria/icones/personne.svg" alt="">
+                            Prénom *
+                        </label>
+                        <input type="text" id="prenom" placeholder="Votre prénom">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">
+                        <img class="icone" src="Projet Cafeteria/icones/enveloppe.svg" alt="">
+                        Adresse e-mail *
+                    </label>
+                    <input type="email" id="email" placeholder="votre.email@exemple.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">
+                        <img class="icone" src="Projet Cafeteria/icones/message.svg" alt="">
+                        Message *
+                    </label>
+                    <textarea id="message" rows="6" placeholder="Écrivez votre message ici..."></textarea>
+                </div>
+
+                <div class="submit-container">
+                    <button type="submit" class="btn-submit">
+                        <img class="icone" src="Projet Cafeteria/icones/avion.svg" alt="">
+                        Envoyer le message
+                    </button>
+                    <p class="form-note">* Tous les champs sont obligatoires</p>
+                </div>
+            </form>
+        </div>
+
+        <!-- Bloc bleu : autres moyens de contact -->
+        <section class="alt-contact-box">
+            <h3>Autres moyens de nous contacter</h3>
+            <div class="alt-contact-info">
+                <div class="contact-item">
+                    <p class="label">Téléphone</p>
+                    <p class="value">+221 77 123 45 67</p>
+                </div>
+                <div class="contact-item">
+                    <p class="label">Email</p>
+                    <p class="value">contact@coffeeloft-ucao.sn</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PIED DE PAGE : rempli par js/script.js -->
+    <footer>
+        <p>&copy; <span id="current-year"></span> COFFEE LOFT UCAO - Cafétéria Universitaire</p>
+        <p id="current-date" class="footer-date"></p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

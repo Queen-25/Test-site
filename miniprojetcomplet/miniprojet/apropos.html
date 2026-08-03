@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  FICHIER : apropos.html  (la page A PROPOS)
+  Elle presente les horaires, l'adresse et les services.
+  Fichiers utilises : css/style.css, js/script.js
+  ============================================================
+-->
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COFFEE LOFT UCAO - A propos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- EN-TETE (le meme que sur les autres pages) -->
+    <header>
+        <div class="logo">
+            <img src="Projet Cafeteria/image logo/LogoCoffeeLoftUcao.svg" alt="Logo" class="header-logo-img">
+            <div class="logo-text">
+                <h1>COFFEE LOFT UCAO</h1>
+                <p>Cafétéria Universitaire</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="apropos.html" class="active">À propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="about-header">
+            <h2>À propos</h2>
+            <p>Tout ce qu'il faut savoir sur le Coffee Loft UCAO.</p>
+        </div>
+
+        <!-- Deux cartes cote a cote : les horaires et l'adresse -->
+        <section class="about-info-grid">
+
+            <!-- Carte 1 : les horaires d'ouverture -->
+            <div class="info-card">
+                <h3>
+                    <!-- Icone : image .svg rangee dans "Projet Cafeteria/icones" -->
+                    <img class="icone" src="Projet Cafeteria/icones/horloge.svg" alt="">
+                    Horaires d'ouverture
+                </h3>
+                <ul class="schedule-list">
+                    <li>
+                        <span class="day">Lundi - Vendredi</span>
+                        <span class="time">7h00 - 19h00</span>
+                    </li>
+                    <li>
+                        <span class="day">Samedi</span>
+                        <span class="time">8h00 - 17h00</span>
+                    </li>
+                    <li>
+                        <span class="day">Dimanche</span>
+                        <span class="time closed">Fermé</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Carte 2 : l'adresse et les contacts -->
+            <div class="info-card address-card">
+                <h3>
+                    <img class="icone" src="Projet Cafeteria/icones/epingle.svg" alt="">
+                    Notre adresse
+                </h3>
+                <p class="company-title"><strong>COFFEE LOFT UCAO</strong></p>
+                <p>Campus de l'Université Catholique de l'Afrique de l'Ouest</p>
+                <p>Bâtiment Principal - Rez-de-chaussée</p>
+                <p class="highlight-city">Rue Saint-Michel, Dakar</p>
+                <div class="address-contact">
+                    <p>Téléphone : +221 77 123 45 67</p>
+                    <p>Email : contact@coffeeloft-ucao.sn</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bloc bleu : les services proposes -->
+        <section class="services-dark-block">
+            <h3>Nos services</h3>
+            <div class="services-grid">
+                <div class="service-item">
+                    <!-- Rond avec l'icone tasse (image .svg) -->
+                    <div class="circle-icon">
+                        <img class="icone" src="Projet Cafeteria/icones/tasse.svg" alt="">
+                    </div>
+                    <h4>Sur place</h4>
+                    <p>Un espace confortable pour étudier ou se détendre.</p>
+                </div>
+                <div class="service-item">
+                    <!-- Rond avec l'icone sac -->
+                    <div class="circle-icon">
+                        <img class="icone" src="Projet Cafeteria/icones/sac.svg" alt="">
+                    </div>
+                    <h4>A emporter</h4>
+                    <p>Commandez et repartez avec vos boissons et repas.</p>
+                </div>
+                <div class="service-item">
+                    <!-- Rond avec l'icone camion -->
+                    <div class="circle-icon">
+                        <img class="icone" src="Projet Cafeteria/icones/camion.svg" alt="">
+                    </div>
+                    <h4>Livraison campus</h4>
+                    <p>Livraison gratuite sur le campus dès 5000 FCFA d'achat.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PIED DE PAGE : rempli par js/script.js -->
+    <footer>
+        <p>&copy; <span id="current-year"></span> COFFEE LOFT UCAO - Cafétéria Universitaire</p>
+        <p id="current-date" class="footer-date"></p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

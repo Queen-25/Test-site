@@ -1,0 +1,153 @@
+/* ============================================================
+   FICHIER : css/menu.css  (style SPECIAL de la page Menu)
+   Appele par menu.html en plus de css/style.css.
+   Il gere : le bandeau de bienvenue, les cartes des produits
+   et le carrousel qui les fait defiler.
+   ============================================================ */
+
+/* 1. BANDEAU DE BIENVENUE TEMPORAIRE
+   Vide au depart. Le JavaScript ecrit le texte dedans,
+   puis ajoute la classe "hide" au bout de 5 secondes pour le faire partir. */
+.menu-welcome-temp {
+    /* Degrade avec les deux couleurs de la charte */
+    background: linear-gradient(135deg, #141A45, #7C170D);
+    color: #ffffff;
+    text-align: center;
+    padding: 18px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(20, 26, 69, 0.25);
+    /* La transition rend l'apparition et la disparition douces */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Classe ajoutee par le JS : le bandeau devient invisible et remonte */
+.menu-welcome-temp.hide {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+/* Titre d'une section (Nos Specialites, Nos Boissons) avec un trait rouge dessous */
+.menu-section-title {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 24px;
+    margin: 40px 0 20px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #7C170D;
+}
+
+/* 2. LES CARTES DES PRODUITS (un plat ou une boisson) */
+.menu-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden; /* coupe l'image qui depasse (utile pour le zoom) */
+    box-shadow: 0 4px 12px rgba(20, 26, 69, 0.08);
+    display: flex;
+    flex-direction: column; /* image en haut, texte en dessous */
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: fondu 0.5s ease both; /* apparition en fondu au chargement */
+}
+
+/* Au survol, la carte se souleve et son ombre grandit */
+.menu-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(20, 26, 69, 0.18);
+}
+
+.menu-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* remplit sans deformer l'image */
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+/* Leger zoom de la photo quand on survole la carte */
+.menu-card:hover img {
+    transform: scale(1.06);
+}
+
+.menu-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* pousse le prix en bas : toutes les cartes s'alignent */
+}
+
+.menu-info h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+    color: #141A45;
+}
+
+.menu-info p {
+    font-size: 13.5px;
+    color: #4a5568;
+    margin-bottom: 14px;
+    flex: 1;
+}
+
+/* Le prix est un petit badge rouge */
+.price {
+    align-self: flex-start; /* le badge ne prend que sa largeur */
+    background-color: #7C170D;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px 14px;
+    border-radius: 20px;
+}
+
+/* 3. LE CARROUSEL : fleche gauche + piste qui defile + fleche droite */
+.carousel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;              /* permet de faire defiler a l'horizontale */
+    scroll-behavior: smooth;      /* defilement fluide au clic sur les fleches */
+    scroll-snap-type: x mandatory;/* chaque carte se cale proprement */
+    padding: 10px 5px 20px;
+    flex: 1;
+}
+
+/* Dans le carrousel, chaque carte garde une largeur fixe */
+.carousel-track .menu-card {
+    flex: 0 0 280px; /* ne grandit pas, ne retrecit pas : 280px */
+    scroll-snap-align: start;
+}
+
+/* Les fleches rondes */
+.carousel-btn {
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background-color: #141A45;
+    color: #ffffff;
+    font-size: 22px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.carousel-btn:hover {
+    background-color: #7C170D;
+}
+
+/* 4. RESPONSIVE : sur telephone, les cartes prennent presque tout l'ecran */
+@media (max-width: 768px) {
+    .carousel-track .menu-card {
+        flex: 0 0 80%;
+    }
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+}

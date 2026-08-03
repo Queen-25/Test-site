@@ -1,0 +1,294 @@
+                                                                                                                                                           /* ==========================================================================
+   CHARTE GRAPHIQUE OFFICIELLE COFFEE LOFT UCAO : 
+   - Bleu Marine : #141A45
+   - Rouge : #7C170D
+   - Fond Crème : #ECE1D5
+   ========================================================================== */
+
+/* 1. RÉINITIALISATION GLOBALE & BASES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #ECE1D5; /* Fond crème officiel de la maquette */
+    color: #141A45; 
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+
+/* 2. EN-TÊTE & NAVIGATION (HEADER) */
+header {
+    background-color: #141A45; /* Bleu marine */
+    padding: 20px 8%;          /* Redonne de l'espace en hauteur */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Aligne le logo et le texte sur la même ligne tout à gauche */
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espace confortable entre le logo et le texte */
+}
+
+/* TAILLE DU LOGO AGRANDIE */
+.header-logo-img {
+    width: 65px;         /* Augmenté pour qu'il soit bien visible */
+    height: 65px;
+    object-fit: contain;
+    border-radius: 50%;  /* Reste bien rond */
+}
+
+header .logo-text {
+    color: #ffffff;
+}
+
+header .logo h1 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+header .logo p {
+    font-size: 11px;
+    opacity: 0.7;
+    margin-top: 1px;
+}
+
+/* NAVIGATION À DROITE (CORRIGÉE) */
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center; /* Aligne tous les liens horizontalement */
+    gap: 10px;           /* Espace régulier entre les menus */
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 22px; /* Donne une belle forme rectangulaire */
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+/* Bouton rouge rectangulaire arrondi pour la page active (comme sur l'image) */
+nav ul li a.active {
+    background-color: #7C170D;
+    border-radius: 6px; /* Bords légèrement arrondis style bouton officiel */
+    color: #ffffff !important;
+}
+
+nav ul li a:hover:not(.active) {
+    opacity: 0.8;
+}
+
+/* Erreurs et validations JS */
+.error-msg {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border-left: 5px solid #7C170D;
+}
+
+.success-msg {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border-left: 5px solid #28a745;
+}
+
+#form-message {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: none;
+}
+
+#form-message.message {
+    display: block;
+}
+
+#form-message.erreur {
+    background-color: #ffe5e5;
+    color: #c62828;
+    border-left: 5px solid #c62828;
+}
+
+#form-message.succes {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-left: 5px solid #2e7d32;
+}
+
+/* ==========================================================================
+   10. PIED DE PAGE (FOOTER)
+   ========================================================================== */
+footer {
+    background-color: #141A45;
+    color: #ffffff;
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 13.5px;
+    border-top: 4px solid #7C170D;
+    margin-top: 60px;
+}
+
+.footer-date {
+    font-size: 11.5px;
+    opacity: 0.7;
+    margin-top: 5px;
+}
+
+/* ==========================================================================
+   11. FLUIDITÉ & RESPONSIVE DESIGN (MOBILES)
+   ========================================================================== */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px;
+    }
+    nav ul {
+        margin-top: 15px;
+    }
+    .about-info-grid, .services-grid, .features-grid, .form-row, .alt-contact-info {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .service-item {
+        max-width: 100%;
+    }
+}
+/* --- LE CONTENEUR DU SLIDER --- */
+.slider-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: #f9f9f9; /* Fond propre en attendant le chargement */
+}
+
+/* --- LES IMAGES DU SLIDER (Pour qu'elles soient identiques à ta photo 1) --- */
+.slider-container img {
+    width: 100%;            /* Force l'image à prendre TOUTE la largeur de l'écran */
+    height: 350px;          /* Bloque la hauteur exacte que tu as actuellement (ajuste si besoin) */
+    object-fit: cover;      /* MAGIQUE : étire et remplit tout l'espace sans déformer les personnages */
+    object-position: center;/* Laisse le comptoir bien centré au milieu */
+    display: block;
+}
+
+/* --- LE TEXTE PAR-DESSUS L'IMAGE (Coffee Loft UCAO...) --- */
+.slider-text {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Rend le texte bien lisible */
+    z-index: 10;
+}
+
+.slider-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.slider-text p {
+    font-size: 1.2rem;
+}/* Conteneur principal du carrousel */
+/* Conteneur principal */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 60vh; /* Ajustez la hauteur selon votre envie */
+    overflow: hidden;
+}
+
+/* Défilement horizontal */
+.carousel-slide {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    animation: scrollCarouselThree 15s infinite ease-in-out;
+}
+
+.slide-item {
+    width: 33.333%;
+    height: 100%;
+}
+
+.slide-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 🌟 LE DÉGRADÉ BLEU MARINE (Comme sur la photo d'origine) */
+.carousel-overlay-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Dégradé qui va de transparent à bleu marine (#101a36) */
+    background: linear-gradient(to bottom, rgba(16, 26, 54, 0) 40%, rgba(16, 26, 54, 0.85) 90%);
+    display: flex;
+    align-items: flex-end; /* Aligne le texte tout en bas */
+    padding-bottom: 40px;  /* Espace par rapport au bord inférieur */
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+/* Style des textes à l'intérieur du dégradé */
+.overlay-content {
+    width: 100%;
+    text-align: left;       /* Aligné à gauche comme sur l'original */
+    padding-left: 10%;      /* Décalage par rapport au bord gauche */
+    color: #ffffff;         /* Écrit en blanc */
+    font-family: sans-serif;
+}
+
+.overlay-content h2 {
+    font-size: 32px;
+    margin: 0 0 5px 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.overlay-content p {
+    font-size: 16px;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* Animation du carrousel */
+@keyframes scrollCarouselThree {
+    0%, 28% { transform: translateX(0%); }
+    33%, 61% { transform: translateX(-33.333%); }
+    66%, 95% { transform: translateX(-66.666%); }
+    100% { transform: translateX(0%); }
+}

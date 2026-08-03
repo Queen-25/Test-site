@@ -1,0 +1,122 @@
+/* ============================================================
+   FICHIER : css/contact.css  (style SPECIAL de la page Contact)
+   Appele par contact.html en plus de css/style.css.
+   Il gere : le formulaire et le bloc "Autres moyens de nous contacter".
+   ============================================================ */
+
+/* 1. LA CARTE BLANCHE QUI CONTIENT LE FORMULAIRE */
+.contact-section {
+    max-width: 750px;
+    margin: 0 auto 35px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(20, 26, 69, 0.06);
+}
+
+/* Une ligne avec deux champs cote a cote (Nom + Prenom) */
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.half-width {
+    flex: 1; /* chaque champ prend la moitie de la ligne */
+}
+
+/* Un champ = une etiquette (label) + une zone de saisie (input) */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: flex;        /* aligne la petite icone et le texte */
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 13.5px;
+}
+
+/* Petite icone devant chaque champ (couleur rouge definie dans le .svg) */
+.form-group label .icone {
+    width: 16px;
+    height: 16px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #f8f9fa;
+    font-family: inherit; /* garde la meme police que le reste */
+}
+
+/* Quand on clique dans un champ, sa bordure devient rouge */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #7C170D;
+    background-color: #ffffff;
+}
+
+/* 2. LE BOUTON D'ENVOI ET LA NOTE EN DESSOUS */
+.submit-container {
+    text-align: center;
+    margin-top: 25px;
+}
+
+/* Le bouton d'envoi aligne son icone avion et son texte */
+.submit-container .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.submit-container .btn-submit .icone {
+    width: 18px;
+    height: 18px;
+}
+
+.form-note {
+    font-size: 12px;
+    color: #718096;
+    margin-top: 10px;
+}
+
+/* 3. LE BLOC BLEU "AUTRES MOYENS DE NOUS CONTACTER" */
+.alt-contact-box {
+    max-width: 750px;
+    margin: 0 auto;
+    background-color: #141A45;
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.alt-contact-box h3 {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.alt-contact-info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.contact-item .label {
+    font-size: 12px;
+    color: #a0aec0;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.contact-item .value {
+    font-size: 16px;
+    font-weight: 700;
+}

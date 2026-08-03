@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee loft ucao - Accueil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/accueil.css">
+</head>
+<body>
+
+    <header>
+        
+        <div class="logo">
+    <!-- On insère l'image du logo rond juste ici -->
+    <img src="Projet Cafeteria/image logo/LogoCoffeeLoftUcao.svg" alt="Logo" class="header-logo-img">
+    <div class="logo-text">
+        <h1>𝑪𝑶𝑭𝑭𝑬𝑬 𝑳𝑶𝑭𝑻 𝑼𝑪𝑨𝑶</h1>
+        <p>Cafétéria Universitaire</p> 
+    </div>
+</div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="apropos.html">À propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="dynamic-welcome-banner" class="alert-banner"></div>
+    <div class="carousel-container">
+        <div class="carousel-slide">
+            <div class="slide-item">
+                <img src="Projet Cafeteria/ImageAccueil.jpeg" alt="Accueil Coffee Loft UCAO">
+            </div>
+            <div class="slide-item">
+                <img src="Projet Cafeteria/MenuCoffee.jpeg" alt="Menu Coffee Loft UCAO">
+            </div>
+            <div class="slide-item">
+                <img src="Projet Cafeteria/StudiantCoffee.jpeg" alt="Étudiants au Coffee Loft UCAO">
+            </div>
+        </div>
+        
+        <div class="carousel-overlay-gradient">
+            <div class="overlay-content">
+                <h2>𝑪𝑶𝑭𝑭𝑬𝑬 𝑳𝑶𝑭𝑻 𝑼𝑪𝑨𝑶</h2>
+                <p>Votre pause café idéale sur le campus</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="welcome-block">
+            <h3>Bienvenue au Coffee Loft UCAO</h3>
+            <p>
+                Situé au cœur du campus de l'UCAO, Coffee Loft est bien plus qu'une simple cafétéria. C'est un espace convivial où étudiants et professeurs se retrouvent pour savourer des cafés d'exception, des repas savoureux et des pâtisseries fraîches. Que ce soit pour une pause entre deux cours ou pour travailler dans une ambiance chaleureuse, nous sommes là pour vous accueillir.
+            </p>
+        </section>
+
+        <section class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">☕</div>
+                <h4>Café de Qualité</h4>
+                <p>Grains sélectionnés et torréfiés avec soin pour un café d'exception</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🍴</div>
+                <h4>Repas Équilibrés</h4>
+                <p>Des plats variés et savoureux préparés quotidiennement</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🕒</div>
+                <h4>Horaires Flexibles</h4>
+                <p>Ouvert du lundi au samedi pour s'adapter à votre emploi du temps</p>
+            </div>
+        </section>
+
+        <div class="cta-container">
+            <a href="menu.html" class="btn-menu-discover">Découvrir notre menu</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> COFFEE LOFT UCAO - Cafétéria Universitaire</p>
+        <p> <span id="current-date" class="footer-date"></span> </p>
+    </footer>
+
+    <script src="js/script.js"></script>

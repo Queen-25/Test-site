@@ -1,0 +1,74 @@
+
+/* ==========================================================================
+   8. PAGE MENU (GRILLE DES ARTICLES)
+   ========================================================================== */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 25px;
+}
+
+.menu-card {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(20, 26, 69, 0.08);
+}
+
+.menu-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.menu-info {
+    padding: 20px;
+}
+
+.menu-info h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.menu-info p {
+    font-size: 13.5px;
+    color: #4a5568;
+    margin-bottom: 12px;
+}
+
+.price {
+    color: #7C170D;
+    font-weight: bold;
+    font-size: 16px;
+}
+.btn-submit {
+    background-color: #7C170D;
+    color: #ffffff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.about-header, .contact-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about-header h2, .contact-header h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 38px;
+    color: #141A45;
+    font-weight: bold;
+}
+
+.about-header p, .contact-header p {
+    font-size: 14px;
+    color: #556073;
+    margin-top: 5px;
+}

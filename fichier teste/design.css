@@ -1,11 +1,26 @@
 html {
     overscroll-behavior: none;
     display: flex-wrap wrap;
+    color: pink;
+    background-color: black;
 }
 
 h1 {
     text-align: center;
+    animation: text 3s ease-in-out infinite;
 }
+
+/*@keyframes text {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}*/ 
 
 .g2 {
     border: none;
@@ -26,8 +41,19 @@ hr {
 .bloc {
     width: 40%;
     height: 40%;
-    ;
+    animation: text 3s ease-in-out infinite;
 }
+/*@keyframes text {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}*/
 
 img {
     width: 10%;
@@ -72,18 +98,52 @@ nav ul li a {
   backdrop-filter: blur(15px);
   box-shadow: 0 15px 35px rgb(0, 0, 0, 0.5);*/
     margin: 0 10px;
+    animation: neonPulse 1.5s ease-in-out infinite alternate;
 }
 
-* {
-    box-sizing: border-box;
-    font-family: 'popping', sans-serif;
+@keyframes neonPulse {
+    0% {
+        box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff;
+    }
+    100% {
+        box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff;
+    }
 }
 
 .info-complementaires {
     text-align: center;
     position: relative;
     padding: 15px 20px;
+    animation: text 3s ease-in-out infinite;
 }
+/*@keyframes text {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}*/
+* {
+    box-sizing: border-box;
+    font-family: 'popping', sans-serif;
+    animation: text 3s ease-in-out infinite;
+}
+@keyframes text {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 
 .info {
     gap: 20px;
@@ -95,4 +155,10 @@ nav ul li a {
 
 .background {
     display: flex;
+}
+
+.g2 {
+    border: none;
+    background-color: black;
+    height: 5px;
 }

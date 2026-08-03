@@ -1,0 +1,149 @@
+/* ==========================================================================
+   6. LOOK MAQUETTE : PAGE À PROPOS (CONFORME AUX IMAGES)
+   ========================================================================== */
+
+/* Grille pour aligner la carte Horaires et Adresse côte à côte */
+.about-info-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.info-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 35px;
+    flex: 1;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.info-card h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 22px;
+    color: #141A45;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid rgba(20, 26, 69, 0.05);
+    padding-bottom: 12px;
+}
+
+/* Liste des horaires alignée gauche-droite */
+.schedule-list {
+    list-style: none;
+}
+
+.schedule-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.schedule-list li:last-child {
+    border-bottom: none;
+}
+
+.schedule-list .time {
+    font-weight: 700;
+    color: #7C170D; /* Heures mises en avant en rouge */
+}
+
+/* Section Adresse */
+.address-card p {
+    font-size: 14px;
+    color: #4a5568;
+    margin-bottom: 6px;
+}
+
+.company-title {
+    font-size: 15px;
+    color: #141A45;
+    margin-bottom: 10px !important;
+}
+
+.highlight-city {
+    color: #7C170D; /* Ville en rouge comme sur la photo */
+    font-weight: 600;
+}
+
+.address-contact {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #edf2f7;
+}
+
+/* Grand bloc bleu marine "Nos Services" */
+.services-dark-block {
+    background-color: #141A45; /* Bleu marine de fond */
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 45px 30px;
+    text-align: center;
+}
+
+.services-dark-block h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 26px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.services-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.service-item {
+    flex: 1;
+    max-width: 300px;
+}
+
+/* Cercles blancs des icônes de services */
+.circle-icon {
+    background: #ffffff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 15px auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.service-item h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.service-item p {
+    font-size: 12.5px;
+    opacity: 0.8;
+    line-height: 1.6;
+}
+/* 5. STRUCTURE DES TITRES DE PAGES (À PROPOS & CONTACT) */
+.about-header, .contact-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about-header h2, .contact-header h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 38px;
+    color: #141A45;
+    font-weight: bold;
+}
+
+.about-header p, .contact-header p {
+    font-size: 14px;
+    color: #556073;
+    margin-top: 5px;
+}

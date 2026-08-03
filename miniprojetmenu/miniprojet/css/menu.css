@@ -1,0 +1,254 @@
+/* ============================================================
+   FICHIER : css/menu.css  (l'habillage SPÉCIAL de la page Menu)
+   Appelé par menu.html avec <link rel="stylesheet" href="css/menu.css">.
+   Il s'occupe uniquement de ce qu'on voit sur la page Menu :
+   le bandeau de bienvenue, les cartes des plats, et le carrousel.
+   (Le style commun à tout le site est dans css/style.css.)
+
+   Rappel : en CSS, on cible un élément du HTML par
+     .classe   -> tous les éléments avec class="classe"
+     #id       -> l'élément unique avec id="id"
+   ============================================================ */
+
+/* ==========================================================================
+   8. PAGE MENU (CARTES DES ARTICLES)
+   ========================================================================== */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 25px;
+}
+
+.menu-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(20, 26, 69, 0.08);
+    border: 1px solid rgba(20, 26, 69, 0.08);
+    display: flex;
+    flex-direction: column;
+    /* Transition pour que le survol soit doux */
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Au survol : la carte se soulève légèrement avec une ombre plus marquée */
+.menu-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(20, 26, 69, 0.18);
+}
+
+.menu-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+/* Léger zoom de l'image quand on survole la carte */
+.menu-card:hover img {
+    transform: scale(1.06);
+}
+
+.menu-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* pousse le prix en bas, cartes alignées même si textes inégaux */
+}
+
+.menu-info h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+    font-weight: 700;
+    color: #141A45;
+}
+
+.menu-info p {
+    font-size: 13.5px;
+    color: #4a5568;
+    margin-bottom: 14px;
+    flex: 1;
+}
+
+/* Le prix devient un petit badge rouge (couleurs de la charte) */
+.price {
+    align-self: flex-start;
+    background-color: #7C170D;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px 14px;
+    border-radius: 20px;
+}
+.btn-submit {
+    background-color: #7C170D;
+    color: #ffffff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: #141A45;
+    transform: translateY(-2px);
+}
+
+.about-header, .contact-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about-header h2, .contact-header h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 38px;
+    color: #141A45;
+    font-weight: bold;
+}
+
+.about-header p, .contact-header p {
+    font-size: 14px;
+    color: #556073;
+    margin-top: 5px;
+}
+
+/* Petit trait rouge centré sous le titre "Notre Menu" */
+.about-header h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #7C170D;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
+/* Apparition douce des cartes au chargement (opacité seule pour ne pas gêner le survol) */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.menu-card {
+    animation: fadeIn 0.6s ease both;
+}
+
+/* ==========================================================================
+   MESSAGE DE BIENVENUE TEMPORAIRE
+   Visible au chargement, puis le JS lui ajoute .hide pour le faire disparaître.
+   ========================================================================== */
+.menu-welcome-temp {
+    /* Dégradé bleu marine -> rouge (les deux couleurs de la charte) */
+    background: linear-gradient(135deg, #141A45 0%, #7C170D 100%);
+    color: #ffffff;
+    text-align: center;
+    padding: 18px 20px;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 14px rgba(20, 26, 69, 0.25);
+    /* Entrée : le bandeau glisse depuis le haut au chargement */
+    animation: welcomeSlide 0.6s ease both;
+    /* La transition rend la disparition douce (fondu + glissement) */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Petite vague animée sous le texte, pour un rendu plus vivant */
+.menu-welcome-temp .wave {
+    display: inline-block;
+    animation: waveHand 1.2s ease-in-out infinite;
+    transform-origin: 70% 70%;
+}
+
+/* Entrée du bandeau (glissement depuis le haut) */
+@keyframes welcomeSlide {
+    from { opacity: 0; transform: translateY(-100%); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* La main qui fait coucou */
+@keyframes waveHand {
+    0%, 60%, 100% { transform: rotate(0deg); }
+    20% { transform: rotate(16deg); }
+    40% { transform: rotate(-8deg); }
+}
+
+/* Classe ajoutée par le JS : le bandeau disparaît en douceur */
+.menu-welcome-temp.hide {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+/* ==========================================================================
+   CARROUSEL DES PRODUITS (plats et boissons alignés sur une ligne)
+   .carousel       = flèche gauche + piste + flèche droite
+   .carousel-track = la bande qui défile horizontalement
+   ========================================================================== */
+.carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;          /* permet le défilement horizontal */
+    scroll-behavior: smooth;   /* défilement fluide quand on clique sur les flèches */
+    scroll-snap-type: x mandatory; /* chaque carte se "cale" proprement */
+    padding: 10px 5px 20px;
+    flex: 1;
+}
+
+/* Chaque carte garde une largeur fixe et reste alignée sur la ligne */
+.carousel-track .menu-card {
+    flex: 0 0 280px;           /* ne grandit pas, ne rétrécit pas : 280px fixes */
+    scroll-snap-align: start;
+}
+
+/* Barre de défilement discrète */
+.carousel-track::-webkit-scrollbar {
+    height: 8px;
+}
+.carousel-track::-webkit-scrollbar-thumb {
+    background: #7C170D;
+    border-radius: 4px;
+}
+
+/* Les flèches rondes de navigation */
+.carousel-btn {
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background-color: #141A45;
+    color: #ffffff;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.carousel-btn:hover {
+    background-color: #7C170D;
+}
+
+/* RESPONSIVE : sur petit écran les cartes prennent presque toute la largeur */
+@media (max-width: 768px) {
+    .carousel-track .menu-card {
+        flex: 0 0 80%;
+    }
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+}

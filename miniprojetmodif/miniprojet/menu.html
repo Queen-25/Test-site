@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  FICHIER : menu.html  (la page Menu du site)
+  Ce fichier décrit le CONTENU de la page (le texte, les images).
+  Il a besoin de 3 autres fichiers pour fonctionner :
+    1) css/style.css  -> le style commun à TOUTES les pages (header, footer...)
+    2) css/menu.css   -> le style PROPRE à cette page (cartes, carrousel...)
+    3) js/script.js   -> le JavaScript (bienvenue, prix, carrousel...)
+  Ces fichiers sont appelés plus bas avec les balises <link> et <script>.
+  ============================================================
+-->
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COFFEE LOFT UCAO - Menu</title>
+
+    <!-- APPEL DES STYLES : ces 2 fichiers .css habillent la page -->
+    <link rel="stylesheet" href="css/style.css"> <!-- style général (toutes les pages) -->
+    <link rel="stylesheet" href="css/menu.css">  <!-- style spécial page Menu -->
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <!-- On insère l'image du logo rond juste ici -->
+            <img src="Projet Cafeteria/image logo/LogoCoffeeLoftUcao.svg" alt="Logo" class="header-logo-img">
+            <div class="logo-text">
+                <h1>COFFEE LOFT UCAO</h1>
+                <p>Cafétéria Universitaire</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="menu.html" class="active">Menu</a></li>
+                <li><a href="apropos.html">À propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- BIENVENUE TEMPORAIRE : cette boîte est VIDE ici.
+         C'est le fichier js/script.js qui écrit le texte dedans (grâce à l'id "menu-welcome"),
+         puis qui le fait disparaître au bout de 5 secondes. -->
+    <div id="menu-welcome" class="menu-welcome-temp"></div>
+
+    <main class="container">
+        <!-- En-tête du Menu -->
+        <div class="about-header">
+            <h2>Notre Menu</h2>
+            <p>Nos plats et boissons, préparés sur place chaque jour.</p>
+            <!-- BOUTON AFFICHER/MASQUER LES PRIX :
+                 son id "toggle-prices-btn" est utilisé par js/script.js pour réagir au clic. -->
+            <div class="cta-container">
+                <button id="toggle-prices-btn" class="btn-submit">Masquer les prix</button>
+            </div>
+        </div>
+
+        <!-- SECTION 1 : LES PLATS -->
+        <h3 class="menu-section-title">Nos Specialites</h3>
+
+        <!-- CARROUSEL = 3 morceaux :
+             1) bouton "prev" (flèche gauche)
+             2) "carousel-track" = la bande qui contient les cartes et qui défile
+             3) bouton "next" (flèche droite)
+             Le style est dans css/menu.css ; le défilement au clic est dans js/script.js. -->
+        <div class="carousel">
+            <button class="carousel-btn prev" aria-label="Précédent">&#8249;</button>
+            <div class="carousel-track">
+
+            <!-- 1. Thiebou Dieunne
+                 MODÈLE D'UNE CARTE (toutes les autres cartes sont construites pareil) :
+                   - <img>            = la photo du plat
+                   - <h3>             = le nom
+                   - <p>              = la description
+                   - <span class="price"> = le prix (c'est ce que le bouton masque/affiche) -->
+            <div class="menu-card">
+                <img src="Projet Cafeteria/image plats/TiepPoisson.jpeg" alt="Thiebou Dieunne">
+                <div class="menu-info">
+                    <h3>Thiébou Dieunne</h3>
+                    <p>Riz au poisson et légumes. Le grand classique sénégalais.</p>
+                    <span class="price">2000 FCFA</span>
+                </div>
+            </div>
+
+            <!-- 2. Thieb bou wekh -->
+            <div class="menu-card">
+                <img src="Projet Cafeteria/image plats/TiepPoissonBlanc.jpeg" alt="Thieb bou wekh">
+                <div class="menu-info">
+                    <h3>Thieb bou wekh</h3>
+                    <p>Riz blanc, poisson ou viande, sauce Penda Mbaye et légumes.</p>
+                    <span class="price">1500 FCFA</span>
+                </div>
+            </div>
+
+            <!-- 3. Yassa poulet -->
+            <div class="menu-card">
+                <img src="Projet Cafeteria/image plats/RizPoulet.jpeg" alt="Yassa poulet">
+                <div class="menu-info">
+                    <h3>Yassa Poulet</h3>
+                    <p>Poulet grillé avec une sauce aux oignons, moutarde et citron.</p>
+                    <span class="price">2 200 FCFA</span>
+                </div>
+            </div>
+
+            <!-- 4. Mafé -->
+            <div class="menu-card">
+                <img src="Projet Cafeteria/image plats/mafe.jpeg" alt="Mafé">
+                <div class="menu-info">
+                    <h3>Mafé</h3>
+                    <p>Viande mijotée dans une sauce à l'arachide, servie avec du riz.</p>
+                    <span class="price">1800FCFA</span>
+                </div>
+            </div>
+
+            <!-- 5. Dakhine -->
+            <div class="menu-card">
+                <img src="Projet Cafeteria/image plats/Dakhine.jpeg" alt="Dakhine">
+                <div class="menu-info">
+                    <h3>Dakhine</h3>
+                    <p>Riz à la pâte d'arachide avec viande ou poisson séché.</p>
+                    <span class="price">1 600FCFA</span>
+                </div>
+            </div>
+
+            <!-- 6. Pastelles -->
+            <div class="menu-card">
+                <img src="Projet Cafeteria/image plats/pastelles.jpeg" alt="Pastelles">
+                <div class="menu-info">
+                    <h3>Pastelles</h3>
+                    <p>Beignets farcis au poisson, avec une sauce tomate un peu piquante.</p>
+                    <span class="price">500 FCFA</span>
+                </div>
+            </div>
+
+            <!-- 7. Thiakry -->
+            <div class="menu-card">
+                <img src="Projet Cafeteria/image boissons/tiakri.jpeg" alt="Thiakry">
+                <div class="menu-info">
+                    <h3>Thiakry</h3>
+                    <p>Couscous de mil et yaourt sucré. Parfait en dessert.</p>
+                    <span class="price">500 FCFA</span>
+                </div>
+            </div>
+
+            <!-- 8. Beignets au chocolat -->
+            <div class="menu-card">
+                <img src="Projet Cafeteria/image plats/beignets.jpeg" alt="Beignets au chocolat">
+                <div class="menu-info">
+                    <h3>Beignets au Chocolat</h3>
+                    <p>Beignets moelleux avec un cœur au chocolat fondant.</p>
+                    <span class="price">1 000 FCFA</span>
+                </div>
+            </div>
+
+            </div>
+            <button class="carousel-btn next" aria-label="Suivant">&#8250;</button>
+        </div>
+
+        <!-- SECTION 2 : LES BOISSONS -->
+        <h3 class="menu-section-title">Nos Boissons</h3>
+        <!-- CARROUSEL : même structure que les plats -->
+        <div class="carousel">
+            <button class="carousel-btn prev" aria-label="Précédent">&#8249;</button>
+            <div class="carousel-track">
+
+            <!-- 1. Jus de bissap -->
+            <div class="menu-card">
+                <img src="Projet Cafeteria/image boissons/Bissap.jpeg" alt="Jus de bissap">
+                <div class="menu-info">
+                    <h3>Jus de Bissap</h3>
+                    <p>Jus d'hibiscus bien frais, parfumé à la menthe.</p>
+                    <span class="price">600 FCFA</span>
+                </div>
+            </div>
+
+            <!-- 2. Jus de bouye -->
+            <div class="menu-card">
+                <img src="Projet Cafeteria/image boissons/Bouye.jpeg" alt="Jus de bouye">
+                <div class="menu-info">
+                    <h3>Jus de Bouye</h3>
+                    <p>Jus de baobab au lait, doux et crémeux.</p>
+                    <span class="price">800 FCFA</span>
+                </div>
+            </div>
+
+            <!-- 3. Schweppes -->
+            <div class="menu-card">
+                <img src="Projet Cafeteria/image boissons/ShweppesCitron.jpeg" alt="Schweppes">
+                <div class="menu-info">
+                    <h3>Schweppes</h3>
+                    <p>Boisson gazeuse fraîche pour accompagner ton repas.</p>
+                    <span class="price">700 FCFA</span>
+                </div>
+            </div>
+
+            <!-- 4. Fanta -->
+            <div class="menu-card">
+                <img src="Projet Cafeteria/image boissons/Fanta.jpeg" alt="Fanta">
+                <div class="menu-info">
+                    <h3>Fanta</h3>
+                    <p>Soda à l'orange, frais et pétillant.</p>
+                    <span class="price">600 FCFA</span>
+                </div>
+            </div>
+
+            <!-- 5. Coca-cola -->
+            <div class="menu-card">
+                <img src="Projet Cafeteria/image boissons/CocaCola.jpeg" alt="Coca-cola">
+                <div class="menu-info">
+                    <h3>Coca-Cola</h3>
+                    <p>Le coca classique, servi bien frais.</p>
+                    <span class="price">600 FCFA</span>
+                </div>
+            </div>
+
+            </div>
+            <button class="carousel-btn next" aria-label="Suivant">&#8250;</button>
+        </div>
+    </main>
+
+    <!-- PIED DE PAGE : l'année et la date sont VIDES ici.
+         js/script.js les remplit automatiquement (ids "current-year" et "current-date"). -->
+    <footer>
+        <p>&copy; <span id="current-year"></span> COFFEE LOFT UCAO — Cafétéria Universitaire</p>
+        <p id="current-date" class="footer-date"></p>
+    </footer>
+
+    <!-- APPEL DU JAVASCRIPT : placé tout en bas pour que la page soit déjà chargée.
+         Ce fichier fait vivre la page (bienvenue, prix, carrousel, date). -->
+    <script src="js/script.js"></script>
+</body>
+</html>

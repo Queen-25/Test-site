@@ -1,0 +1,314 @@
+/* ============================================================
+   FICHIER : css/style.css  (le style COMMUN a toutes les pages)
+
+   Ce fichier est appele par les 4 pages HTML avec :
+       <link rel="stylesheet" href="css/style.css">
+
+   Il contient ce qui se repete partout : les couleurs, l'en-tete,
+   le menu de navigation, le pied de page, les boutons et les titres.
+   Chaque page a AUSSI son propre fichier css pour ses details
+   (accueil.css, menu.css, apropos.css, contact.css).
+
+   Les couleurs officielles (la "charte graphique") :
+     - Bleu marine : #141A45
+     - Rouge       : #7C170D
+     - Creme (fond): #ECE1D5
+   ============================================================ */
+
+/* 1. REINITIALISATION : on remet tout a zero pour partir sur des bases propres.
+   Le "*" veut dire "tous les elements de la page". */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* la largeur inclut la bordure et le padding */
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Defilement doux quand on clique sur un lien interne */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #ECE1D5; /* fond creme */
+    color: #141A45;            /* couleur du texte par defaut */
+    line-height: 1.6;          /* espace entre les lignes, plus lisible */
+}
+
+/* ANIMATIONS REUTILISABLES (definies une fois, utilisees partout).
+   Une "keyframe" decrit le debut (from) et la fin (to) d'une animation. */
+@keyframes apparaitre {
+    from { opacity: 0; transform: translateY(20px); } /* invisible et un peu plus bas */
+    to   { opacity: 1; transform: translateY(0); }    /* visible a sa place */
+}
+
+/* Fondu simple (sans deplacement) : utilise pour les cartes qui ont
+   deja un effet de deplacement au survol, pour ne pas se gener. */
+@keyframes fondu {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* On applique cette apparition au contenu principal de chaque page */
+main {
+    animation: apparaitre 0.6s ease both;
+}
+
+/* .container centre le contenu et limite sa largeur sur les grands ecrans */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;      /* auto a gauche et a droite = centre */
+    padding: 40px 20px;
+}
+
+/* 2. EN-TETE ET NAVIGATION (le meme bandeau bleu en haut de chaque page) */
+header {
+    background-color: #141A45;
+    padding: 20px 8%;
+    display: flex;                   /* logo a gauche, menu a droite */
+    justify-content: space-between;  /* les ecarte aux deux extremites */
+    align-items: center;
+    /* "sticky" : l'en-tete reste colle en haut quand on descend la page */
+    position: sticky;
+    top: 0;
+    z-index: 100; /* passe au-dessus du reste */
+    box-shadow: 0 2px 10px rgba(20, 26, 69, 0.25);
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* espace entre le logo et le texte */
+}
+
+.header-logo-img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    border-radius: 50%; /* rend le logo rond */
+}
+
+header .logo-text {
+    color: #ffffff;
+}
+
+header .logo h1 {
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+header .logo p {
+    font-size: 11px;
+    opacity: 0.7; /* un peu transparent pour rester discret */
+}
+
+/* Le menu : les liens sur une seule ligne */
+nav ul {
+    display: flex;
+    list-style: none; /* enleve les puces des listes */
+    gap: 10px;
+    align-items: center;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none; /* enleve le soulignement des liens */
+    font-size: 14px;
+    padding: 10px 22px;
+    display: inline-block;
+    position: relative; /* necessaire pour placer le trait anime en dessous */
+    transition: opacity 0.2s ease;
+}
+
+/* Petit trait rouge sous chaque lien : invisible au depart (largeur 0) */
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 22px;
+    bottom: 4px;
+    width: 0;
+    height: 2px;
+    background-color: #7C170D;
+    transition: width 0.25s ease;
+}
+
+/* Au survol, le trait grandit de gauche a droite */
+nav ul li a:hover::after {
+    width: calc(100% - 44px);
+}
+
+/* La page en cours est marquee par la classe "active" (bouton rouge) */
+nav ul li a.active {
+    background-color: #7C170D;
+    border-radius: 6px;
+}
+
+/* Pas de trait anime sur le lien actif (il a deja son fond rouge) */
+nav ul li a.active::after {
+    display: none;
+}
+
+/* 3. TITRES DE PAGE (Notre Menu, A propos, Contactez-nous...) */
+.about-header,
+.contact-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about-header h2,
+.contact-header h2 {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 38px;
+    color: #141A45;
+}
+
+.about-header p,
+.contact-header p {
+    font-size: 14px;
+    color: #556073;
+    margin-top: 5px;
+}
+
+/* Petit trait rouge decoratif sous le titre de page */
+.about-header h2::after,
+.contact-header h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #7C170D;
+    margin: 12px auto 0; /* centre le trait */
+    border-radius: 2px;
+}
+
+/* 4. BOUTONS (memes boutons rouges partout) */
+.btn-submit,
+.btn-menu-discover {
+    display: inline-block;
+    background-color: #7C170D;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 30px;
+    border: none;
+    margin-top: 3%;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Au survol, le bouton devient bleu marine et monte un peu */
+.btn-submit:hover,
+.btn-menu-discover:hover {
+    background-color: #141A45;
+    transform: translateY(-2px);
+}
+
+/* 5. MESSAGES DU FORMULAIRE (ecrits par le JavaScript sur la page contact)
+   .message est cachee au depart  ; le JS ajoute .erreur ou .succes pour l'afficher. */
+#form-message {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: none;
+}
+
+#form-message.message {
+    display: block; /* devient visible des qu'un message est ecrit */
+}
+
+#form-message.erreur {
+    background-color: #ffe5e5;
+    color: #c62828;
+    border-left: 5px solid #c62828;
+}
+
+#form-message.succes {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-left: 5px solid #2e7d32;
+}
+
+/* NOTE SUR LES ICONES :
+   Les petites images (horloge, tasse, avion...) sont des fichiers ".svg"
+   ranges dans le dossier  Projet Cafeteria/icones .
+   On les affiche comme des images normales avec <img class="icone" ...>.
+   La couleur (rouge ou blanc) est deja choisie DANS le fichier .svg.
+   Ici on regle seulement leur taille selon l'endroit ou elles sont. */
+.icone {
+    display: block; /* evite un petit espace sous l'image */
+}
+
+/* 6. BANDEAU DE BIENVENUE DE L'ACCUEIL (rempli par le JavaScript) */
+.alert-banner {
+    background-color: #7C170D;
+    color: #ffffff;
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;             /* pour aligner les 2 tasses et le texte sur une ligne */
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.alert-banner .icone {
+    width: 18px;
+    height: 18px;
+}
+
+/* 7. PIED DE PAGE (le meme en bas de chaque page) */
+footer {
+    background-color: #141A45;
+    color: #ffffff;
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 13.5px;
+    border-top: 4px solid #7C170D;
+    margin-top: 60px;
+}
+
+.footer-date {
+    font-size: 11.5px;
+    opacity: 0.7;
+    margin-top: 5px;
+}
+
+/* 8. RESPONSIVE : reglages pour les petits ecrans (telephones)
+   En dessous de 768px de large, on empile les elements les uns sous les autres. */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* logo au-dessus, menu en dessous */
+        padding: 15px;
+    }
+
+    nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;        /* les liens passent a la ligne si besoin */
+        justify-content: center;
+    }
+
+    /* Les grilles a plusieurs colonnes passent en une seule colonne */
+    .about-info-grid,
+    .services-grid,
+    .features-grid,
+    .form-row,
+    .alt-contact-info {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* ACCESSIBILITE : si l'utilisateur a demande "moins d'animations" dans son
+   systeme, on les desactive pour son confort. C'est une bonne habitude. */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}

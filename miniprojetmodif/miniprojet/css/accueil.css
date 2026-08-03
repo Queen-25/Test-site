@@ -1,0 +1,145 @@
+/* ============================================================
+   FICHIER : css/accueil.css  (style SPECIAL de la page d'accueil)
+   Appele par index.html en plus de css/style.css.
+   Il gere : le carrousel d'images du haut, le bloc de presentation,
+   les 3 cartes "avantages" et le bouton vers le menu.
+   ============================================================ */
+
+/* 1. LE CARROUSEL D'IMAGES DU HAUT (les photos qui defilent toutes seules) */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 60vh;      /* 60% de la hauteur de l'ecran */
+    overflow: hidden;  /* cache les images qui sortent du cadre */
+}
+
+/* La bande contient les 3 images cote a cote (300% = 3 x 100%) */
+.carousel-slide {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    /* animation : nom, duree, repetition infinie */
+    animation: defileImages 15s infinite ease-in-out;
+}
+
+.slide-item {
+    width: 33.333%; /* chaque image = un tiers de la bande */
+    height: 100%;
+}
+
+.slide-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Le voile bleu marine en degrade, avec le texte par-dessus les images */
+.carousel-overlay-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(20, 26, 69, 0) 40%, rgba(20, 26, 69, 0.85) 90%);
+    display: flex;
+    align-items: flex-end; /* texte aligne en bas */
+    padding-bottom: 40px;
+}
+
+.overlay-content {
+    padding-left: 10%;
+    color: #ffffff;
+    animation: apparaitre 0.8s ease both; /* le texte monte en douceur au chargement */
+}
+
+.overlay-content h2 {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.overlay-content p {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* L'animation deplace la bande pour montrer chaque image a tour de role */
+@keyframes defileImages {
+    0%, 28%   { transform: translateX(0); }        /* image 1 */
+    33%, 61%  { transform: translateX(-33.333%); } /* image 2 */
+    66%, 95%  { transform: translateX(-66.666%); } /* image 3 */
+    100%      { transform: translateX(0); }        /* retour a l'image 1 */
+}
+
+/* 2. BLOC DE PRESENTATION (le texte de bienvenue) */
+.welcome-block {
+    text-align: center;
+    max-width: 850px;
+    margin: 10px auto 40px;
+}
+
+.welcome-block h3 {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.welcome-block p {
+    font-size: 14.5px;
+    color: #2d3748;
+    line-height: 1.8;
+}
+
+/* 3. LES 3 CARTES "AVANTAGES" (Cafe de qualite, Repas, Horaires) */
+.features-grid {
+    display: flex;
+    gap: 20px;
+    margin: 40px auto;
+    max-width: 950px;
+}
+
+.feature-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px 20px;
+    text-align: center;
+    flex: 1; /* les 3 cartes ont la meme largeur */
+    box-shadow: 0 4px 12px rgba(20, 26, 69, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    /* Apparition en fondu au chargement */
+    animation: fondu 0.6s ease both;
+}
+
+/* Les cartes apparaissent l'une apres l'autre (effet en cascade) */
+.feature-card:nth-child(1) { animation-delay: 0.1s; }
+.feature-card:nth-child(2) { animation-delay: 0.25s; }
+.feature-card:nth-child(3) { animation-delay: 0.4s; }
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(20, 26, 69, 0.18);
+}
+
+/* L'icone en haut de chaque carte, centree */
+.feature-icon {
+    width: 34px;
+    height: 34px;
+    margin: 0 auto 12px; /* auto a gauche/droite = centree */
+}
+
+.feature-card h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #141A45;
+}
+
+.feature-card p {
+    color: #4a5568;
+    font-size: 13px;
+}
+
+/* 4. LE BOUTON "Decouvrir notre menu" (centre en bas) */
+.cta-container {
+    text-align: center;
+    margin: 35px 0 10px;
+}
